@@ -103,5 +103,8 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Scroll view images\2014_security_scanning.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Scroll view images\WAV-512.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
