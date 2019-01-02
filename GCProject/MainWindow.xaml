@@ -5,8 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GCProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="350" Width="525"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+
+	<Grid>
+		<materialDesign:Card Padding="32" Margin="16">
+			<TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My First Material Design App</TextBlock>
+		</materialDesign:Card>
+	</Grid>
+
+	<!--<Grid>
+		~1~<UniformGrid Columns="4" Rows="1">
+			<UniformGrid.Resources>
+				<Style TargetType="{x:Type Button}">
+					<Setter Property="Margin" Value="2"/>
+					<Setter Property="Height" Value="100"/>
+					<Setter Property="Width" Value="100"/>
+				</Style>
+			</UniformGrid.Resources>
+			<Button Background="Transparent" BorderBrush="Transparent">
+				<Image Source="Resources/Images/Scroll view images/2014_security_scanning.png"></Image>
+			</Button>
+			<Button Background="Transparent" BorderBrush="Transparent">
+				<Image Source="Resources/Images/Scroll view images/2014_security_scanning.png"></Image>
+			</Button>
+		</UniformGrid>@1@
+
+		<ItemsControl>
+			<ItemsControl.ItemContainerStyle>
+				<Style>
+					<Setter Property="FrameworkElement.Margin" Value="1"/>
+					<Setter Property="FrameworkElement.Height" Value="100"/>
+					<Setter Property="FrameworkElement.Width" Value="100"/>
+				</Style>
+			</ItemsControl.ItemContainerStyle>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<UniformGrid Rows="1" Columns="2"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.Items>
+				<Button Background="Transparent" BorderBrush="Transparent">
+					<Image Source="Resources/Images/Scroll view images/2014_security_scanning.png"></Image>
+				</Button>
+				<Button Background="Transparent" BorderBrush="Transparent">
+					<Image Source="Resources/Images/Scroll view images/2014_security_scanning.png"></Image>
+				</Button>
+			</ItemsControl.Items>
+		</ItemsControl>
+	</Grid>-->
 </Window>
