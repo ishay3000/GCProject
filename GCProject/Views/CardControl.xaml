@@ -21,7 +21,8 @@
 					<RowDefinition/>
 				</Grid.RowDefinitions>
 				<StackPanel Orientation="Horizontal" Grid.Row="1">
-					<materialDesign:Card Background="Transparent" Width="200" VerticalAlignment="Center" ToolTip="{Binding Path=CardDescription, Mode=TwoWay}">
+					<materialDesign:Card RenderTransformOrigin="0.5, 0.5" Background="Transparent" Width="200" VerticalAlignment="Center" ToolTip="{Binding Path=CardDescription, Mode=TwoWay}">
+						
 						<materialDesign:Card.RenderTransform>
 							<ScaleTransform 
 								x:Name="scale" 
@@ -68,7 +69,11 @@
 						</materialDesign:Card.Triggers>
 						<StackPanel>
 							<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="{Binding Path=CardText, Mode=TwoWay}" />
-							<Image Width="120" HorizontalAlignment="Stretch" Source="{Binding Path=ImagePath, Mode=TwoWay}"></Image>
+							<Image Width="120" HorizontalAlignment="Center" Source="{Binding Path=ImagePath, Mode=TwoWay}">
+								<Image.InputBindings>
+									<MouseBinding Gesture="LeftClick" Command="{Binding Path=Command}"/>
+								</Image.InputBindings>
+							</Image>
 						</StackPanel>
 					</materialDesign:Card>
 				</StackPanel>
@@ -79,8 +84,10 @@
 
 	<Grid>
 		<ListView ItemsSource="{Binding Cards}">
+
 			<ListView.ItemContainerStyle>
 				<Style TargetType="{x:Type ListViewItem}">
+					<Setter Property="Margin" Value="50"/>
 					<Setter Property="Background" Value="Transparent" />
 					<Setter Property="Template">
 						<Setter.Value>
@@ -91,12 +98,12 @@
 					</Setter>
 				</Style>
 			</ListView.ItemContainerStyle>
+
 			<ListView.ItemsPanel>
 				<ItemsPanelTemplate>
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
 				</ItemsPanelTemplate>
 			</ListView.ItemsPanel>
 		</ListView>
-		<!--<ListBox HorizontalAlignment="Center" ItemsSource="{Binding Cards}"/>-->
 	</Grid>
 </UserControl>

@@ -27,5 +27,23 @@ namespace GCProject.Views
 			InitializeComponent();
 			DataContext = _viewModel;
 		}
+
+		//public static readonly DependencyProperty ButtonCommandProperty = DependencyProperty.Register("ButtonCommand", typeof(ICommand), typeof(CardControl), new PropertyMetadata(default(ICommand)));
+
+		//public ICommand ButtonCommand
+		//{
+		//	get
+		//	{
+		//		return (ICommand)GetValue(ButtonCommandProperty);
+		//	}
+		//	set
+		//	{
+		//		SetValue(ButtonCommandProperty, value);
+		//	}
+		//}
+		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		{
+			_viewModel.CardCommand.Execute(null);
+		}
 	}
 }
