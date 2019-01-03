@@ -14,14 +14,58 @@
 
 	<UserControl.Resources>
 		<DataTemplate DataType="{x:Type data:MenuCard}">
-			<Grid>
+			<Grid Name="CardsGrid">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
 					<RowDefinition Height="2*"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
 				<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="1">
-					<materialDesign:Card Width="200" VerticalAlignment="Center" ToolTip="Scan Network">
+					<materialDesign:Card Background="Transparent" Width="200" VerticalAlignment="Center" ToolTip="{Binding Path=CardDescription, Mode=TwoWay}">
+						<materialDesign:Card.RenderTransform>
+							<ScaleTransform 
+								x:Name="scale" 
+								CenterX="50" 
+								CenterY="50" 
+								ScaleX="1" 
+								ScaleY="1" />
+						</materialDesign:Card.RenderTransform>
+
+						<materialDesign:Card.Triggers>
+							<EventTrigger RoutedEvent="materialDesign:Card.MouseEnter">
+								<BeginStoryboard>
+									<BeginStoryboard.Storyboard>
+										<Storyboard Duration="0:0:0.2">
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleX" 
+												To="2" />
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleY" 
+												To="2" />
+										</Storyboard>
+									</BeginStoryboard.Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+
+							<EventTrigger RoutedEvent="materialDesign:Card.MouseLeave">
+								<BeginStoryboard>
+									<BeginStoryboard.Storyboard>
+										<Storyboard Duration="0:0:0.2">
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleX" 
+												To="1" />
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleY" 
+												To="1" />
+										</Storyboard>
+									</BeginStoryboard.Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+						</materialDesign:Card.Triggers>
 						<StackPanel>
 							<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="{Binding Path=CardText, Mode=TwoWay}" />
 							<Image Width="150" HorizontalAlignment="Stretch" Source="{Binding Path=ImagePath, Mode=TwoWay}"></Image>
@@ -32,7 +76,15 @@
 		</DataTemplate>
 	</UserControl.Resources>
 
+
 	<Grid>
-		<ListBox HorizontalAlignment="Center" ItemsSource="{Binding Cards}"/>
+		<ListView ItemsSource="{Binding Cards}">
+			<ListView.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
+				</ItemsPanelTemplate>
+			</ListView.ItemsPanel>
+		</ListView>
+		<!--<ListBox HorizontalAlignment="Center" ItemsSource="{Binding Cards}"/>-->
 	</Grid>
 </UserControl>

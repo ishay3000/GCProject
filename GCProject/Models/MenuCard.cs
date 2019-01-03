@@ -7,17 +7,21 @@
 	{
 		private string _cardText;
 		private string _imagePath;
+		private string _cardDescription;
+
 
 		/// <summary>
 		/// Constructs a card with its text and image source
 		/// </summary>
 		/// <param name="cardText"></param>
 		/// <param name="imagePath"></param>
-		public MenuCard(string cardText, string imagePath)
+		public MenuCard(string cardText, string imagePath, string cardDescription)
 		{
 			_cardText = cardText;
 			_imagePath = imagePath;
+			_cardDescription = cardDescription;
 		}
+
 
 		public string CardText
 		{
@@ -29,6 +33,12 @@
 		{
 			get => _imagePath;
 			set => _imagePath = value;
+		}
+
+		public string CardDescription
+		{
+			get => _cardDescription;
+			set => _cardDescription = value;
 		}
 	}
 }
