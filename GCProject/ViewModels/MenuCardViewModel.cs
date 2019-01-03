@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using GCProject.Models;
 
 namespace GCProject.ViewModels
@@ -17,12 +10,12 @@ namespace GCProject.ViewModels
 		private string _imagePath;
 		private string _cardDescription;
 		private readonly ObservableCollection<MenuCard> _cards = new ObservableCollection<MenuCard>();
-		private RelayCommand _cardCommand;
+		//private RelayCommand _cardCommand;
 
 		public MenuCardViewModel()
 		{
 			LoadCards();
-			_cardCommand = new RelayCommand((o => true), ((o) => MessageBox.Show("Hello, World!")));
+			//_cardCommand = new RelayCommand((o => true), ((o) => MessageBox.Show("Hello, World!")));
 		}
 
 
@@ -39,17 +32,27 @@ namespace GCProject.ViewModels
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
 				"Scan the network for devices",
 				new RelayCommand(o => true, o => ScanCommand())));
+			_cards.Add(new MenuCard("Scan Network",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
+				"Scan the network for devices",
+				new RelayCommand(o => true, o => ScanCommand())));
 		}
 
 		private void StenographyCommand()
 		{
-			MessageBox.Show("Stenography not implemented yet.");
+			MessageBox.Show("Stenography is not implemented yet.");
 		}
 
 		private void ScanCommand()
 		{
-			MessageBox.Show("Scan not implemented yet.");
+			MessageBox.Show("Scan not is implemented yet.");
 		}
+
+		// TODO reserved for future use (?)
+/*		private void ViewLog()
+		{
+			MessageBox.Show("Log Viewing is not implemented yet.");
+		}*/
 
 		public string CardText
 		{
@@ -90,18 +93,18 @@ namespace GCProject.ViewModels
 			}
 		}
 
-		public ICommand CardCommand
-		{
-			get => _cardCommand;
-			//set
-			//{
-			//	if (_cardCommand != value)
-			//	{
-			//		_cardCommand = value;
-			//		OnPropertyChanged("CardCommand");
-			//	}
-			//}
-		}
+		//public ICommand CardCommand
+		//{
+		//	get => _cardCommand;
+		//	//set
+		//	//{
+		//	//	if (_cardCommand != value)
+		//	//	{
+		//	//		_cardCommand = value;
+		//	//		OnPropertyChanged("CardCommand");
+		//	//	}
+		//	//}
+		//}
 
 		public ObservableCollection<MenuCard> Cards => _cards;
 	}

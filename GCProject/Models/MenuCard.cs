@@ -13,6 +13,10 @@ namespace GCProject.Models
 		private string _cardDescription;
 		private RelayCommand _command;
 
+		public MenuCard()
+		{
+		}
+
 
 		/// <summary>
 		/// Constructs a card with its text and image source
@@ -48,9 +52,10 @@ namespace GCProject.Models
 			set => _cardDescription = value;
 		}
 
-		public ICommand Command
+		public RelayCommand Command
 		{
 			get => _command;
+			set => _command = value;
 		}
 	}
 }

@@ -41,9 +41,9 @@ namespace GCProject.Views
 		//		SetValue(ButtonCommandProperty, value);
 		//	}
 		//}
-		private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-		{
-			_viewModel.CardCommand.Execute(null);
-		}
+		//private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+		//{
+		//	_viewModel.CardCommand.Execute(null);
+		//}
 	}
 }
