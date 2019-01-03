@@ -20,7 +20,7 @@
 					<RowDefinition Height="2*"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
-				<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="1">
+				<StackPanel Orientation="Horizontal" Grid.Row="1">
 					<materialDesign:Card Background="Transparent" Width="200" VerticalAlignment="Center" ToolTip="{Binding Path=CardDescription, Mode=TwoWay}">
 						<materialDesign:Card.RenderTransform>
 							<ScaleTransform 
@@ -35,15 +35,15 @@
 							<EventTrigger RoutedEvent="materialDesign:Card.MouseEnter">
 								<BeginStoryboard>
 									<BeginStoryboard.Storyboard>
-										<Storyboard Duration="0:0:0.2">
+										<Storyboard Duration="0:0:0.1">
 											<DoubleAnimation 
 												Storyboard.TargetName="scale" 
 												Storyboard.TargetProperty="ScaleX" 
-												To="2" />
+												To="1.5" />
 											<DoubleAnimation 
 												Storyboard.TargetName="scale" 
 												Storyboard.TargetProperty="ScaleY" 
-												To="2" />
+												To="1.5" />
 										</Storyboard>
 									</BeginStoryboard.Storyboard>
 								</BeginStoryboard>
@@ -52,7 +52,7 @@
 							<EventTrigger RoutedEvent="materialDesign:Card.MouseLeave">
 								<BeginStoryboard>
 									<BeginStoryboard.Storyboard>
-										<Storyboard Duration="0:0:0.2">
+										<Storyboard Duration="0:0:0.1">
 											<DoubleAnimation 
 												Storyboard.TargetName="scale" 
 												Storyboard.TargetProperty="ScaleX" 
@@ -68,7 +68,7 @@
 						</materialDesign:Card.Triggers>
 						<StackPanel>
 							<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="{Binding Path=CardText, Mode=TwoWay}" />
-							<Image Width="150" HorizontalAlignment="Stretch" Source="{Binding Path=ImagePath, Mode=TwoWay}"></Image>
+							<Image Width="120" HorizontalAlignment="Stretch" Source="{Binding Path=ImagePath, Mode=TwoWay}"></Image>
 						</StackPanel>
 					</materialDesign:Card>
 				</StackPanel>
@@ -79,6 +79,18 @@
 
 	<Grid>
 		<ListView ItemsSource="{Binding Cards}">
+			<ListView.ItemContainerStyle>
+				<Style TargetType="{x:Type ListViewItem}">
+					<Setter Property="Background" Value="Transparent" />
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type ListViewItem}">
+								<ContentPresenter />
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+				</Style>
+			</ListView.ItemContainerStyle>
 			<ListView.ItemsPanel>
 				<ItemsPanelTemplate>
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center"></StackPanel>
