@@ -15,6 +15,14 @@
         Background="#F3B66D"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
+	<!--<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="CardResource.xaml"></ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>-->
+
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -23,7 +31,8 @@
 		<materialDesign:Card Width="600" Height="50">
 			<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Welcome to Data Over sound. What would you like to do?"></TextBlock>
 		</materialDesign:Card>
-		<views:CardControl Grid.Row="1"/>
+		<!--<views:CardControl Grid.Row="1"/>-->
+		<views:CustomCardControl Grid.Row="1"/>
 	</Grid>
 
 
