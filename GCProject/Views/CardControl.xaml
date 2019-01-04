@@ -13,7 +13,9 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
 	<UserControl.Resources>
+		
 		<DataTemplate DataType="{x:Type data:MenuCard}">
+			
 			<Grid Name="CardsGrid">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
@@ -23,50 +25,7 @@
 				<StackPanel Orientation="Horizontal" Grid.Row="1">
 					<materialDesign:Card RenderTransformOrigin="0.5, 0.5" Background="Transparent" Width="200" VerticalAlignment="Center" ToolTip="{Binding Path=CardDescription, Mode=TwoWay}">
 						
-						<materialDesign:Card.RenderTransform>
-							<ScaleTransform 
-								x:Name="scale" 
-								CenterX="50" 
-								CenterY="50" 
-								ScaleX="1" 
-								ScaleY="1" />
-						</materialDesign:Card.RenderTransform>
-
-						<materialDesign:Card.Triggers>
-							<EventTrigger RoutedEvent="materialDesign:Card.MouseEnter">
-								<BeginStoryboard>
-									<BeginStoryboard.Storyboard>
-										<Storyboard Duration="0:0:0.1">
-											<DoubleAnimation 
-												Storyboard.TargetName="scale" 
-												Storyboard.TargetProperty="ScaleX" 
-												To="1.5" />
-											<DoubleAnimation 
-												Storyboard.TargetName="scale" 
-												Storyboard.TargetProperty="ScaleY" 
-												To="1.5" />
-										</Storyboard>
-									</BeginStoryboard.Storyboard>
-								</BeginStoryboard>
-							</EventTrigger>
-
-							<EventTrigger RoutedEvent="materialDesign:Card.MouseLeave">
-								<BeginStoryboard>
-									<BeginStoryboard.Storyboard>
-										<Storyboard Duration="0:0:0.1">
-											<DoubleAnimation 
-												Storyboard.TargetName="scale" 
-												Storyboard.TargetProperty="ScaleX" 
-												To="1" />
-											<DoubleAnimation 
-												Storyboard.TargetName="scale" 
-												Storyboard.TargetProperty="ScaleY" 
-												To="1" />
-										</Storyboard>
-									</BeginStoryboard.Storyboard>
-								</BeginStoryboard>
-							</EventTrigger>
-						</materialDesign:Card.Triggers>
+						
 						<StackPanel>
 							<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="{Binding Path=CardText, Mode=TwoWay}" />
 							<Image Width="120" HorizontalAlignment="Center" Source="{Binding Path=ImagePath, Mode=TwoWay}">

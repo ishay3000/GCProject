@@ -25,6 +25,4 @@
 		</materialDesign:Card>
 		<views:CardControl Grid.Row="1"/>
 	</Grid>
-
-
 </Window>

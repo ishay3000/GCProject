@@ -47,3 +47,51 @@ namespace GCProject.Views
 		}
 	}
 }
+
+/*
+ * <!--<materialDesign:Card.RenderTransform>
+							<ScaleTransform 
+								x:Name="scale" 
+								CenterX="50" 
+								CenterY="50" 
+								ScaleX="1" 
+								ScaleY="1" />
+						</materialDesign:Card.RenderTransform>
+
+						<materialDesign:Card.Triggers>
+							<EventTrigger RoutedEvent="materialDesign:Card.MouseEnter">
+								<BeginStoryboard>
+									<BeginStoryboard.Storyboard>
+										<Storyboard Duration="0:0:0.1">
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleX" 
+												To="1.5" />
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleY" 
+												To="1.5" />
+										</Storyboard>
+									</BeginStoryboard.Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+
+							<EventTrigger RoutedEvent="materialDesign:Card.MouseLeave">
+								<BeginStoryboard>
+									<BeginStoryboard.Storyboard>
+										<Storyboard Duration="0:0:0.1">
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleX" 
+												To="1" />
+											<DoubleAnimation 
+												Storyboard.TargetName="scale" 
+												Storyboard.TargetProperty="ScaleY" 
+												To="1" />
+										</Storyboard>
+									</BeginStoryboard.Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+						</materialDesign:Card.Triggers>-->
+
+	*/
