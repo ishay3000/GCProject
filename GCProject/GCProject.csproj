@@ -60,17 +60,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\EquipmentItem.cs" />
     <Compile Include="Models\MenuCard.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\AbsViewModel.cs" />
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\CardScrollControl.xaml.cs">
+      <DependentUpon>CardScrollControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScrollWindow.xaml.cs">
+      <DependentUpon>ScrollWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\Resource Dictionaries\CardResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Resource Dictionaries\HorizontalListViewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Resource Dictionaries\ListViewCardsDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CardScrollControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +122,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ScrollWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

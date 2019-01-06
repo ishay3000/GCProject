@@ -32,10 +32,35 @@ namespace GCProject.ViewModels
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
 				"Scan the network for devices",
 				new RelayCommand(o => true, o => ScanCommand())));
+
+			_cards.Add(new MenuCard("Stenography",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\stenography.png",
+				"Hide a message in a WAV file using stenography",
+				new RelayCommand(o => true, o => StenographyCommand())));
 			_cards.Add(new MenuCard("Scan Network",
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
 				"Scan the network for devices",
 				new RelayCommand(o => true, o => ScanCommand())));
+
+			_cards.Add(new MenuCard("Stenography",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\stenography.png",
+				"Hide a message in a WAV file using stenography",
+				new RelayCommand(o => true, o => StenographyCommand())));
+			_cards.Add(new MenuCard("Scan Network",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
+				"Scan the network for devices",
+				new RelayCommand(o => true, o => ScanCommand())));
+
+			_cards.Add(new MenuCard("Stenography",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\stenography.png",
+				"Hide a message in a WAV file using stenography",
+				new RelayCommand(o => true, o => StenographyCommand())));
+			_cards.Add(new MenuCard("Scan Network",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
+				"Scan the network for devices",
+				new RelayCommand(o => true, o => ScanCommand())));
+
+
 		}
 
 		private void StenographyCommand()

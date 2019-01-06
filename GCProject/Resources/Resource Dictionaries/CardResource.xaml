@@ -6,7 +6,7 @@
 	<Style x:Key="MenuCardGrowStyle" TargetType="{x:Type materialDesign:Card}">
 		<Style.Triggers>
 			<Trigger Property="materialDesign:Card.IsMouseOver" Value="True">
-				<Setter Property="Background" Value="Aquamarine"></Setter>
+				<!--<Setter Property="Background" Value="Aquamarine"></Setter>-->
 				<Trigger.EnterActions>
 					<BeginStoryboard>
 						<Storyboard>

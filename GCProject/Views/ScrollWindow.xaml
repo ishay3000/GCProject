@@ -1,0 +1,83 @@
+﻿<Window x:Class="GCProject.Views.ScrollWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GCProject.Views"
+        xmlns:models="clr-namespace:GCProject.Models"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ScrollWindow" Height="500" Width="1000" ResizeMode="NoResize">
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Resources/Resource Dictionaries/CardResource.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="../Resources/Resource Dictionaries/ListViewCardsDictionary.xaml"></ResourceDictionary>
+				<ResourceDictionary Source="../Resources/Resource Dictionaries/HorizontalListViewResource.xaml"></ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+
+	<Grid>
+		<ListBox Visibility="Hidden" x:Name="horizontalListBox"  SelectionMode="Extended"
+		         Style="{ StaticResource ListBoxWithAutoScroll_Horizontal }">
+		</ListBox>
+
+		<local:CardScrollControl/>
+	</Grid>
+
+	<!--<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Resources/Resource Dictionaries/HorizontalListViewResource.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+
+
+			<LinearGradientBrush x:Key="EquipmentItemBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FF223B84" Offset="1"/>
+				<GradientStop Color="#FF4B94EC" Offset="0.7"/>
+			</LinearGradientBrush>
+
+			<LinearGradientBrush x:Key="EquipmentItemSelectedBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FF1C9B37" Offset="1"/>
+				<GradientStop Color="#FF26DE2C" Offset="0.7"/>
+			</LinearGradientBrush>
+
+			<DataTemplate DataType="{x:Type models:EquipmentItem}" >
+				<Border x:Name="Border" BorderBrush="Black" BorderThickness="1" CornerRadius="4" Width="84" Height="68"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Padding="1" 
+                        Background="{StaticResource EquipmentItemBackground}">
+					<StackPanel >
+						<TextBlock Text="{Binding Path=Name}" Foreground="White" FontSize="12" TextAlignment="Left" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+						<TextBlock Text="{Binding CampaignName}" 
+                                   Foreground="White"
+                                   FontSize="12"
+                                   TextAlignment="Left" 
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"/>
+					</StackPanel>
+				</Border>
+				<DataTemplate.Triggers>
+					<DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True" >
+						<Setter TargetName="Border" Property="Background" Value="{StaticResource EquipmentItemSelectedBackground}" />
+					</DataTrigger>
+				</DataTemplate.Triggers>
+			</DataTemplate>
+
+		</ResourceDictionary>
+	</Window.Resources>
+	<Grid>
+		<TabControl Margin="0" Name="tabControl1" VerticalAlignment="Stretch">
+
+			<TabItem Header="Horizontal ListBox" >
+				<StackPanel>
+					<ListBox x:Name="horizontalListBox"  SelectionMode="Extended"
+                        Style="{ StaticResource ListBoxWithAutoScroll_Horizontal }">
+					</ListBox>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+
+	</Grid>-->
+</Window>
