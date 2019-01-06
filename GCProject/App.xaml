@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GCProject"
-             StartupUri="Views/MainWindow.xaml">
+			 xmlns:vm="clr-namespace:GCProject.ViewModels"
+			 xmlns:views="clr-namespace:GCProject.Views"
+             StartupUri="Views/DataTemplateWindow.xaml">
     <Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
@@ -12,6 +14,10 @@
 				<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
 			</ResourceDictionary.MergedDictionaries>
+
+			<DataTemplate DataType="{x:Type vm:MenuCardViewModel}">
+				<views:CustomCardControl />
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

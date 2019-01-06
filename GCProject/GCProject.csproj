@@ -78,6 +78,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DashboardWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DataTemplateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +96,12 @@
     </Compile>
     <Compile Include="Views\CustomCardControl.xaml.cs">
       <DependentUpon>CustomCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardWindow.xaml.cs">
+      <DependentUpon>DashboardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DataTemplateWindow.xaml.cs">
+      <DependentUpon>DataTemplateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

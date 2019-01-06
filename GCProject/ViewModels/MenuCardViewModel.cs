@@ -4,7 +4,7 @@ using GCProject.Models;
 
 namespace GCProject.ViewModels
 {
-	class MenuCardViewModel : AbsViewModel
+	public class MenuCardViewModel : AbsViewModel
 	{
 		private string _cardText;
 		private string _imagePath;
