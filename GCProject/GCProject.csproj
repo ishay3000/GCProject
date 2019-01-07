@@ -60,12 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Miscellanies\FrameManager.cs" />
     <Compile Include="Models\MenuCard.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\AbsViewModel.cs" />
     <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
-    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Page Include="Resources\Resource Dictionaries\CardResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,7 +75,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\AnimationMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CustomCardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,8 +103,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Views\CustomCardControl.xaml.cs">
       <DependentUpon>CustomCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardWindow.xaml.cs">
       <DependentUpon>DashboardWindow.xaml</DependentUpon>
@@ -143,6 +156,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Scroll view images\stenography.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\back.jpg" />
+    <Resource Include="Assets\pexels-photo-247885.jpeg" />
+    <Resource Include="Assets\pexels-photo-374592.jpeg" />
+    <Resource Include="Assets\pexels-photo-701026.jpeg" />
+    <Resource Include="Assets\pexels-photo-701337.jpeg" />
+    <Resource Include="Assets\pexels-photo-701449.jpeg" />
+    <Resource Include="Assets\pexels-photo-701762.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

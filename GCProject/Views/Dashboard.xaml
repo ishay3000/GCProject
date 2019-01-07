@@ -1,0 +1,183 @@
+﻿<Window x:Class="GCProject.Views.Dashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GCProject.Views"
+		xmlns:viewModels="clr-namespace:GCProject.ViewModels"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowState="{Binding WindowState, Mode=TwoWay}"
+        Title="Dashboard" Height="600" Width="1024">
+
+	<Window.DataContext>
+		<viewModels:WindowViewModel/>
+	</Window.DataContext>
+
+
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="0"/>
+	</WindowChrome.WindowChrome>
+
+
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Themes/AnimationMenu.xaml"/>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+			<BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+		</EventTrigger>
+		<EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+			<BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+		</EventTrigger>
+	</Window.Triggers>
+	<Grid Background="#FF3580BF">
+		<StackPanel x:Name="StackPanelMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
+			<StackPanel.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</StackPanel.RenderTransform>
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" HorizontalAlignment="Center">
+				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
+					<materialDesign:PackIcon Kind="Settings" Width="40" Height="40"/>
+				</Button>
+				<Button x:Name="button" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="80" Height="80" Margin="10" RenderTransformOrigin="0.5,0.5">
+					<Button.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Button.RenderTransform>
+					<Button.Background>
+						<ImageBrush ImageSource="../Assets/pexels-photo-247885.jpeg" Stretch="UniformToFill"/>
+					</Button.Background>
+				</Button>
+				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
+					<materialDesign:PackIcon Kind="InformationOutline" Width="40" Height="40"/>
+				</Button>
+			</StackPanel>
+			<ListView>
+				<ListViewItem x:Name="listViewItem" Height="60" RenderTransformOrigin="0.5,0.5">
+					<ListViewItem.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</ListViewItem.RenderTransform>
+					<StackPanel Orientation="Horizontal" Margin="10 0">
+						<materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+						<TextBlock Text="Home" Margin="10" VerticalAlignment="Center"/>
+					</StackPanel>
+				</ListViewItem>
+				<ListViewItem x:Name="listViewItem1" Height="60" RenderTransformOrigin="0.5,0.5">
+					<ListViewItem.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</ListViewItem.RenderTransform>
+					<StackPanel Orientation="Horizontal" Margin="10 0">
+						<materialDesign:PackIcon Kind="AccountSearch" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+						<TextBlock Text="Search" Margin="10" VerticalAlignment="Center"/>
+					</StackPanel>
+				</ListViewItem>
+				<ListViewItem x:Name="listViewItem2" Height="60" RenderTransformOrigin="0.5,0.5">
+					<ListViewItem.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</ListViewItem.RenderTransform>
+					<StackPanel Orientation="Horizontal" Margin="10 0">
+						<materialDesign:PackIcon Kind="Facebook" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+						<TextBlock Text="Facebook" Margin="10" VerticalAlignment="Center"/>
+					</StackPanel>
+				</ListViewItem>
+				<ListViewItem x:Name="listViewItem3" Height="60" RenderTransformOrigin="0.5,0.5">
+					<ListViewItem.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</ListViewItem.RenderTransform>
+					<StackPanel Orientation="Horizontal" Margin="10 0">
+						<materialDesign:PackIcon Kind="Twitter" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+						<TextBlock Text="Twitter" Margin="10" VerticalAlignment="Center"/>
+					</StackPanel>
+				</ListViewItem>
+				<ListViewItem x:Name="listViewItem4" Height="60" RenderTransformOrigin="0.5,0.5">
+					<ListViewItem.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</ListViewItem.RenderTransform>
+					<StackPanel Orientation="Horizontal" Margin="10 0">
+						<materialDesign:PackIcon Kind="Skype" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+						<TextBlock Text="Skype" Margin="10" VerticalAlignment="Center"/>
+					</StackPanel>
+				</ListViewItem>
+			</ListView>
+		</StackPanel>
+		<Grid x:Name="GridMain" Background="#F3B66D" Width="Auto" RenderTransformOrigin="0.5,0.5">
+			<Grid.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Grid.RenderTransform>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+
+			</Grid.ColumnDefinitions>
+
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding MinimizeCommand}" Foreground="Black" BorderBrush="{x:Null}">
+					<materialDesign:PackIcon Kind="WindowMinimize"></materialDesign:PackIcon>
+				</Button>
+				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding MaximizeCommand}" Foreground="Black" BorderBrush="{x:Null}">
+					<materialDesign:PackIcon Kind="WindowMaximize"></materialDesign:PackIcon>
+				</Button>
+				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding CloseCommand}" Foreground="Black" BorderBrush="{x:Null}">
+					<materialDesign:PackIcon Kind="Close"></materialDesign:PackIcon>
+				</Button>
+
+			</StackPanel>
+
+
+
+			<Frame x:Name="MainFrame" Margin="0 40 0 0"/>
+
+			<Button x:Name="ButtonCloseMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Command="{Binding AnimOpenCommand}" Visibility="{Binding OpenMenuVisibility}">
+				<materialDesign:PackIcon Kind="Menu" Foreground="#FF3580BF"/>
+			</Button>
+			<Button x:Name="ButtonOpenMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Command="{Binding AnimCloseCommand}" Visibility="{Binding CloseMenuVisibility}">
+				<materialDesign:PackIcon Kind="Menu" Foreground="#FF3580BF"/>
+			</Button>
+
+		</Grid>
+	</Grid>
+</Window>

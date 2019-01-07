@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GCProject.miscellanies;
 
 namespace GCProject
 {
@@ -23,6 +24,8 @@ namespace GCProject
 		public MainWindow()
 		{
 			InitializeComponent();
+			FrameManager.MainFrame = MainFrame;
+			FrameManager.MovePage(new Views.CustomCardControl());
 		}
 	}
 }

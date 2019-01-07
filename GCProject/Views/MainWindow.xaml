@@ -7,32 +7,39 @@
         Title="MainWindow" Height="500" Width="1000"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:views="clr-namespace:GCProject.Views"
+		xmlns:viewModels="clr-namespace:GCProject.ViewModels"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="#F3B66D"
+		WindowState="{Binding WindowState, Mode=TwoWay}"
+		WindowStyle="None"
+		ResizeMode="NoResize"
         FontFamily="{DynamicResource MaterialDesignFont}">
 
-	<!--<Window.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="CardResource.xaml"></ResourceDictionary>
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</Window.Resources>-->
+	<Window.DataContext>
+		<viewModels:WindowViewModel/>
+	</Window.DataContext>
 
 	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<materialDesign:Card Width="600" Height="50">
-			<TextBlock TextAlignment="Center" Style="{DynamicResource MaterialDesignTitleTextBlock}" Text="Welcome to Data Over sound. What would you like to do?"></TextBlock>
-		</materialDesign:Card>
-		<!--<views:CardControl Grid.Row="1"/>-->
-		<views:CustomCardControl Grid.Row="1"/>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+			<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding MinimizeCommand}" Foreground="Black" BorderBrush="{x:Null}">
+				<materialDesign:PackIcon Kind="WindowMinimize"></materialDesign:PackIcon>
+			</Button>
+			<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding MaximizeCommand}" Foreground="Black" BorderBrush="{x:Null}">
+				<materialDesign:PackIcon Kind="WindowMaximize"></materialDesign:PackIcon>
+			</Button>
+			<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" Command="{Binding CloseCommand}" Foreground="Black" BorderBrush="{x:Null}">
+				<materialDesign:PackIcon Kind="Close"></materialDesign:PackIcon>
+			</Button>
+
+		</StackPanel>
+
+
+
+		<Frame x:Name="MainFrame" Margin="0 40 0 0"/>
 	</Grid>
 
 

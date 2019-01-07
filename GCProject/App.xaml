@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:GCProject"
 			 xmlns:vm="clr-namespace:GCProject.ViewModels"
 			 xmlns:views="clr-namespace:GCProject.Views"
-             StartupUri="Views/DataTemplateWindow.xaml">
+             StartupUri="Views/Dashboard.xaml">
     <Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
