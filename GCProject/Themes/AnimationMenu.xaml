@@ -15,7 +15,13 @@
 			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
 		</DoubleAnimationUsingKeyFrames>
-		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem">
+		<!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DashboardListViewControl">
+			<EasingDoubleKeyFrame KeyTime="0" Value="-250"/>
+			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-250"/>
+			<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+		</DoubleAnimationUsingKeyFrames>-->
+
+		<!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="listViewItem">
 			<EasingDoubleKeyFrame KeyTime="0" Value="-250"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-250"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
@@ -39,7 +45,8 @@
 			<EasingDoubleKeyFrame KeyTime="0" Value="-250"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-250"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
-		</DoubleAnimationUsingKeyFrames>
+		</DoubleAnimationUsingKeyFrames>-->
+
 		<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="button">
 			<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
 			<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>

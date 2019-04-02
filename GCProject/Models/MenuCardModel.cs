@@ -7,14 +7,14 @@ namespace GCProject.Models
 	/// <summary>
 	/// A class that represents a card in the menu window
 	/// </summary>
-	public class MenuCard
+	public class MenuCardModel
 	{
 		private string _cardText;
 		private string _imagePath;
 		private string _cardDescription;
 		private RelayCommand _command;
 
-		public MenuCard()
+		public MenuCardModel()
 		{
 		}
 
@@ -26,7 +26,7 @@ namespace GCProject.Models
 		/// <param name="imagePath">The image path</param>
 		/// <param name="cardDescription">The card's desc. will be displayed in the tooltip</param>
 		/// <param name="command">The command for this card</param>
-		public MenuCard(string cardText, string imagePath, string cardDescription, RelayCommand command)
+		public MenuCardModel(string cardText, string imagePath, string cardDescription, RelayCommand command)
 		{
 			_cardText = cardText;
 			_imagePath = imagePath;

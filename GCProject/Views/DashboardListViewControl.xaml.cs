@@ -10,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GCProject.ViewModels;
 
 namespace GCProject.Views
 {
     /// <summary>
-    /// Interaction logic for DataTemplateWindow.xaml
+    /// Interaction logic for DashboardListViewControl.xaml
     /// </summary>
-    public partial class DataTemplateWindow : Window
+    public partial class DashboardListViewControl : UserControl
     {
-	    public MenuCardViewModel ViewModel { get; set; }
-        public DataTemplateWindow()
+        public DashboardListViewControl()
         {
             InitializeComponent();
-			ViewModel = new MenuCardViewModel();
-			//DataContext = ViewModel;
         }
     }
 }

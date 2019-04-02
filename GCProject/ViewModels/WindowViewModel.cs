@@ -9,15 +9,18 @@ using GCProject.Commands;
 
 namespace GCProject.ViewModels
 {
-	class WindowViewModel : AbsViewModel
+	class WindowViewModel : BaseViewModel
 	{
 		private ICommand _minimizeCommand;
 		private ICommand _maximizeCommand;
 		private ICommand _closeCommand;
+
 		private ICommand _animOpenCommand;
 		private ICommand _animCloseCommand;
+
 		private Visibility _openMenuVisibility;
 		private Visibility _closeMenuVisibility;
+
 		private WindowState _windowState;
 
 		#region Props
@@ -25,7 +28,11 @@ namespace GCProject.ViewModels
 		public ICommand MinimizeCommand
 		{
 			get => _minimizeCommand;
-			set => _minimizeCommand = value;
+			set
+			{
+				_minimizeCommand = value;
+				OnPropertyChanged("MinimizeCommand");
+			}
 		}
 
 		public ICommand MaximizeCommand

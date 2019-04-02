@@ -5,12 +5,12 @@ using GCProject.Models;
 
 namespace GCProject.ViewModels
 {
-	public class MenuCardViewModel : AbsViewModel
+	public class MenuCardViewModel : BaseViewModel
 	{
 		private string _cardText;
 		private string _imagePath;
 		private string _cardDescription;
-		private readonly ObservableCollection<MenuCard> _cards = new ObservableCollection<MenuCard>();
+		private readonly ObservableCollection<MenuCardModel> _cards = new ObservableCollection<MenuCardModel>();
 		//private RelayCommand _cardCommand;
 
 		public MenuCardViewModel()
@@ -25,28 +25,24 @@ namespace GCProject.ViewModels
 		/// </summary>
 		private void LoadCards()
 		{
-			_cards.Add(new MenuCard("Stenography",
+			_cards.Add(new MenuCardModel("Call Manager",
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\stenography.png",
-				"Hide a message in a WAV file using stenography",
+				"Initiate a Call Manager software (Dialogic Global Call based)",
 				new RelayCommand(o => true, o => StenographyCommand())));
-			_cards.Add(new MenuCard("Scan Network",
+			_cards.Add(new MenuCardModel("Scan Network",
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
-				"Scan the network for devices",
-				new RelayCommand(o => true, o => ScanCommand())));
-			_cards.Add(new MenuCard("Scan Network",
-				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
-				"Scan the network for devices",
+				"Scan the network for Telephony devices",
 				new RelayCommand(o => true, o => ScanCommand())));
 		}
 
 		private void StenographyCommand()
 		{
-			MessageBox.Show("Stenography is not implemented yet.");
+			MessageBox.Show("Call management is not implemented yet.");
 		}
 
 		private void ScanCommand()
 		{
-			MessageBox.Show("Scan not is implemented yet.");
+			MessageBox.Show("Network scanning not is implemented yet.");
 		}
 
 		// TODO reserved for future use (?)
@@ -107,6 +103,6 @@ namespace GCProject.ViewModels
 		//	//}
 		//}
 
-		public ObservableCollection<MenuCard> Cards => _cards;
+		public ObservableCollection<MenuCardModel> Cards => _cards;
 	}
 }

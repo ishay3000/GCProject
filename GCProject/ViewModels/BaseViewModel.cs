@@ -4,7 +4,10 @@ using GCProject.Annotations;
 
 namespace GCProject.ViewModels
 {
-	public abstract class AbsViewModel : INotifyPropertyChanged
+	/// <summary>
+	/// A base class of view-models
+	/// </summary>
+	public abstract class BaseViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 		

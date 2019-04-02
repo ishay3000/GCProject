@@ -61,10 +61,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Miscellanies\FrameManager.cs" />
-    <Compile Include="Models\MenuCard.cs" />
+    <Compile Include="Models\SideMenuOptionModel.cs" />
+    <Compile Include="Models\MenuCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\AbsViewModel.cs" />
-    <Compile Include="ViewModels\DelegateCommand.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Page Include="Resources\Resource Dictionaries\CardResource.xaml">
@@ -72,6 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Resource Dictionaries\ListViewCardsDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Resource Dictionaries\ListViewSideMenuOptionsDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,11 +91,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DashboardWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DataTemplateWindow.xaml">
+    <Page Include="Views\DashboardListViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,6 +103,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\SideMenuOptionViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Views\CustomCardControl.xaml.cs">
       <DependentUpon>CustomCardControl.xaml</DependentUpon>
@@ -110,11 +111,8 @@
     <Compile Include="Views\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DashboardWindow.xaml.cs">
-      <DependentUpon>DashboardWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DataTemplateWindow.xaml.cs">
-      <DependentUpon>DataTemplateWindow.xaml</DependentUpon>
+    <Compile Include="Views\DashboardListViewControl.xaml.cs">
+      <DependentUpon>DashboardListViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
