@@ -1,5 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
+using GCProject.Commands;
+using GCProject.miscellanies;
 using GCProject.Models;
+using GCProject.Views;
 using MaterialDesignThemes.Wpf;
 
 namespace GCProject.ViewModels
@@ -23,8 +27,10 @@ namespace GCProject.ViewModels
 		/// </summary>
 		private void LoadMenuOptions()
 		{
-			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Home, "Home"));
-			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Settings, "Settings"));
+			RelayCommand home = new RelayCommand(o => true, o => FrameManager.MovePage(new CustomCardControl()));
+			RelayCommand settings = new RelayCommand(o => true, o => FrameManager.MovePage(new ScanNetworkControl()));
+			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Home, "Home", home));
+			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Settings, "Settings", settings));
 		}
 	}
 }

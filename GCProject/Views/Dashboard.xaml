@@ -83,7 +83,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Frame x:Name="MainFrame" Margin="0 40 0 0"/>
+			<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0 40 0 0"/>
 
 			<Button x:Name="ButtonCloseMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Command="{Binding AnimOpenCommand}" Visibility="{Binding OpenMenuVisibility}">
 				<materialDesign:PackIcon Kind="Menu" Foreground="#FF3580BF"/>
