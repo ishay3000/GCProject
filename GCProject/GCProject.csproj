@@ -171,5 +171,14 @@
     <Resource Include="Assets\pexels-photo-701449.jpeg" />
     <Resource Include="Assets\pexels-photo-701762.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Scroll view images\Call_Manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Scroll view images\telephony_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Scroll view images\telephon_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

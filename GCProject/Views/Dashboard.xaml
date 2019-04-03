@@ -38,7 +38,7 @@
 		</EventTrigger>
 	</Window.Triggers>
 	<Grid Background="#FF3580BF">
-		<StackPanel x:Name="StackPanelMenu" Width="250" HorizontalAlignment="Left" Margin="-250 0 0 0" RenderTransformOrigin="0.5,0.5">
+		<StackPanel x:Name="StackPanelMenu" Width="150" HorizontalAlignment="Left" Margin="-150 0 0 0" RenderTransformOrigin="0.5,0.5">
 			<StackPanel.RenderTransform>
 				<TransformGroup>
 					<ScaleTransform/>
@@ -48,9 +48,7 @@
 				</TransformGroup>
 			</StackPanel.RenderTransform>
 			<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="100" HorizontalAlignment="Center">
-				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
-					<materialDesign:PackIcon Kind="Settings" Width="40" Height="40"/>
-				</Button>
+
 				<Button x:Name="button" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" BorderBrush="{x:Null}" Padding="0" Width="80" Height="80" Margin="10" RenderTransformOrigin="0.5,0.5">
 					<Button.RenderTransform>
 						<TransformGroup>
@@ -61,12 +59,10 @@
 						</TransformGroup>
 					</Button.RenderTransform>
 					<Button.Background>
-						<ImageBrush ImageSource="../Resources/Images/Scroll view images/2014_security_scanning.png" Stretch="UniformToFill"/>
+						<ImageBrush ImageSource="../Resources/Images/Scroll view images/telephon_icon.png" Stretch="UniformToFill"/>
 					</Button.Background>
 				</Button>
-				<Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Width="50" Height="50" Margin="10">
-					<materialDesign:PackIcon Kind="InformationOutline" Width="40" Height="40"/>
-				</Button>
+
 			</StackPanel>
 			<local:DashboardListViewControl x:Name="DashboardListViewControl" />
 		</StackPanel>
@@ -82,6 +78,8 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
+
+			<Label Foreground="DarkCyan" Content="Welcome to NetScanner" HorizontalAlignment="Center" FontSize="50"></Label>
 
 			<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0 40 0 0"/>
 

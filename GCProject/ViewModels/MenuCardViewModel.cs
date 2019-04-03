@@ -16,7 +16,6 @@ namespace GCProject.ViewModels
 		public MenuCardViewModel()
 		{
 			LoadCards();
-			//_cardCommand = new RelayCommand((o => true), ((o) => MessageBox.Show("Hello, World!")));
 		}
 
 
@@ -26,9 +25,10 @@ namespace GCProject.ViewModels
 		private void LoadCards()
 		{
 			_cards.Add(new MenuCardModel("Call Manager",
-				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\stenography.png",
-				"Initiate a Call Manager software (Dialogic Global Call based)",
+				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\Call_Manager.png",
+				"Initiate a Call Manager software (using Dialogic Global Call)",
 				new RelayCommand(o => true, o => StenographyCommand())));
+
 			_cards.Add(new MenuCardModel("Scan Network",
 				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
 				"Scan the network for Telephony devices",
