@@ -6,44 +6,67 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using GCProject.Miscellanies;
 using GCProject.ViewModels;
+using GCProject.Views;
 
 namespace GCProject.miscellanies
 {
+
+	public enum ControlsTitles
+	{
+		Cards,
+		Settings
+	}
     static class FrameManager
     {
 	    public static Frame MainFrame { get; set; }
 		// TODO either find a use for this or remove it you lazy baboon
-	    private static readonly Dictionary<string, UserControl> ExtrasDictionary;
+	    private static readonly Dictionary<ControlsTitles, 
+		    Tuple<UserControl, string>> ControlsTitlesDict;
 
 	    static FrameManager()
 	    {
-		    ExtrasDictionary = new Dictionary<string, UserControl>();
+		    ControlsTitlesDict = new Dictionary<ControlsTitles, Tuple<UserControl, string>>();
+			InitDictionary();
+	    }
+
+	    private static void InitDictionary()
+	    {
+		    ControlsTitlesDict[ControlsTitles.Cards] = 
+			    new Tuple<UserControl, string>(new CustomCardControl(), "Welcome to Telephony Scanner");
+			
 	    }
 
 		/// <summary>
 		/// Moves the frame to a different page
 		/// </summary>
-		/// <param name="page">the user control page</param>
-		public static void MovePage(UserControl page)
-		{
-			MainFrame.Content = page;
-		}
-
-	    public static void PutExtra(string key, UserControl value)
+		/// <param name="pageTitle">the page title</param>
+	    public static void MovePage(ControlsTitles pageTitle)
 	    {
-		    ExtrasDictionary[key] = value;
-	    }
-
-	    public static object GetExtra(string key)
-	    {
-		    if (ExtrasDictionary.ContainsKey(key))
+		    if (ControlsTitlesDict.ContainsKey(pageTitle))
 		    {
-			    return ExtrasDictionary[key];
-		    }
-		    else
-		    {
-			    return null;
+			    var controlTuple = ControlsTitlesDict[pageTitle];
+				// change page
+			    MainFrame.Content = controlTuple.Item1;
+				// change title
+			    WindowViewModel.INSTANCE.WindowTitle = controlTuple.Item2;
 		    }
 	    }
+
+	    //public static void PutExtra(string key, UserControl value)
+	    //{
+	    // ExtrasDictionary[key] = value;
+	    //}
+
+	    //public static object GetExtra(string key)
+	    //{
+	    // if (ExtrasDictionary.ContainsKey(key))
+	    // {
+	    //  return ExtrasDictionary[key];
+	    // }
+	    // else
+	    // {
+	    //  return null;
+	    // }
+	    //}
     }
 }

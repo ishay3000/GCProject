@@ -32,7 +32,11 @@ namespace GCProject.ViewModels
 		public string WindowTitle
 		{
 			get => _windowTitle;
-			set { OnPropertyChanged("MinimizeCommand"); }
+			set
+			{
+				_windowTitle = value;
+				OnPropertyChanged("MinimizeCommand");
+			}
 		}
 
 	public ICommand MinimizeCommand

@@ -25,7 +25,7 @@ namespace GCProject.Views
         {
             InitializeComponent();
             FrameManager.MainFrame = MainFrame;
-            FrameManager.MovePage(new Views.CustomCardControl());
+            FrameManager.MovePage(ControlsTitles.Cards);
             DataContext = WindowViewModel.INSTANCE;
         }
 	}
