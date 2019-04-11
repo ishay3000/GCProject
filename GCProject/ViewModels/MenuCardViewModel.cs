@@ -13,7 +13,11 @@ namespace GCProject.ViewModels
 		private readonly ObservableCollection<MenuCardModel> _cards = new ObservableCollection<MenuCardModel>();
 		//private RelayCommand _cardCommand;
 
-		public MenuCardViewModel()
+		private static readonly MenuCardViewModel Instance = new MenuCardViewModel();
+
+		public static MenuCardViewModel INSTANCE => Instance;
+
+		private MenuCardViewModel()
 		{
 			LoadCards();
 		}

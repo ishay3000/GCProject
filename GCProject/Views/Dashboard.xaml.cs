@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GCProject.miscellanies;
+using GCProject.ViewModels;
 
 namespace GCProject.Views
 {
@@ -25,6 +26,7 @@ namespace GCProject.Views
             InitializeComponent();
             FrameManager.MainFrame = MainFrame;
             FrameManager.MovePage(new Views.CustomCardControl());
-		}
+            DataContext = WindowViewModel.INSTANCE;
+        }
 	}
 }

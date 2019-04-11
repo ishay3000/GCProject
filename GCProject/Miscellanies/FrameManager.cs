@@ -4,29 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using GCProject.Miscellanies;
+using GCProject.ViewModels;
 
 namespace GCProject.miscellanies
 {
     static class FrameManager
     {
 	    public static Frame MainFrame { get; set; }
-	    private static Dictionary<string, object> _extrasDictionary = new Dictionary<string, object>();
+		// TODO either find a use for this or remove it you lazy baboon
+	    private static readonly Dictionary<string, UserControl> ExtrasDictionary;
 
-	    public static void MovePage(object page)
+	    static FrameManager()
 	    {
-		    MainFrame.Content = page;
+		    ExtrasDictionary = new Dictionary<string, UserControl>();
 	    }
 
-	    public static void PutExtra(string key, object value)
+		/// <summary>
+		/// Moves the frame to a different page
+		/// </summary>
+		/// <param name="page">the user control page</param>
+		public static void MovePage(UserControl page)
+		{
+			MainFrame.Content = page;
+		}
+
+	    public static void PutExtra(string key, UserControl value)
 	    {
-		    _extrasDictionary[key] = value;
+		    ExtrasDictionary[key] = value;
 	    }
 
 	    public static object GetExtra(string key)
 	    {
-		    if (_extrasDictionary.ContainsKey(key))
+		    if (ExtrasDictionary.ContainsKey(key))
 		    {
-			    return _extrasDictionary[key];
+			    return ExtrasDictionary[key];
 		    }
 		    else
 		    {

@@ -21,11 +21,10 @@ namespace GCProject.Views
     /// </summary>
     public partial class CustomCardControl : UserControl
     {
-	    MenuCardViewModel _viewModel = new MenuCardViewModel();
 		public CustomCardControl()
         {
             InitializeComponent();
-            this.DataContext = _viewModel;
+            this.DataContext = MenuCardViewModel.INSTANCE;
         }
     }
 }

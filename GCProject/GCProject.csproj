@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Miscellanies\BaseUserControl.cs" />
     <Compile Include="Miscellanies\FrameManager.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />
     <Compile Include="Models\MenuCardModel.cs" />

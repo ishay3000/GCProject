@@ -23,9 +23,19 @@ namespace GCProject.ViewModels
 
 		private WindowState _windowState;
 
+		private string _windowTitle;
+
+
+
 		#region Props
 
-		public ICommand MinimizeCommand
+		public string WindowTitle
+		{
+			get => _windowTitle;
+			set { OnPropertyChanged("MinimizeCommand"); }
+		}
+
+	public ICommand MinimizeCommand
 		{
 			get => _minimizeCommand;
 			set
@@ -129,7 +139,11 @@ namespace GCProject.ViewModels
 
 		#endregion
 
-		public WindowViewModel()
+		private static readonly WindowViewModel Instance = new WindowViewModel();
+
+		public static WindowViewModel INSTANCE => Instance;
+
+		private WindowViewModel()
 		{
 			_minimizeCommand = new RelayCommand((o => true), OnMinimize);
 			_maximizeCommand = new RelayCommand((o => true), OnMaximize);

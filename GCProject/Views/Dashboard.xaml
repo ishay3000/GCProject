@@ -11,10 +11,6 @@
         WindowState="{Binding WindowState, Mode=TwoWay}"
         Title="Dashboard" Height="500" Width="900">
 
-	<Window.DataContext>
-		<viewModels:WindowViewModel/>
-	</Window.DataContext>
-
 
 	<!--<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="0"/>
@@ -79,7 +75,7 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Label Foreground="DarkCyan" Content="Welcome to NetScanner" HorizontalAlignment="Center" FontSize="50"></Label>
+			<Label Foreground="DarkCyan" Content="{Binding Path=WindowTitle}"  HorizontalAlignment="Center" FontSize="50"></Label>
 
 			<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0 40 0 0"/>
 

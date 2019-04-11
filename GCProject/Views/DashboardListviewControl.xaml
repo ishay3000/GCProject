@@ -40,10 +40,6 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 
-	<UserControl.DataContext>
-		<viewModels:SideMenuOptionViewModel/>
-	</UserControl.DataContext>
-
 	<Grid>
 		<ListView ItemsSource="{Binding Path=SideMenuOptions}" >
 		</ListView>

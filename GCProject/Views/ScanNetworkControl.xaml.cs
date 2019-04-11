@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GCProject.Miscellanies;
 
 namespace GCProject.Views
 {
@@ -19,7 +20,7 @@ namespace GCProject.Views
     /// Interaction logic for ScanNetworkControl.xaml
     /// </summary>
     public partial class ScanNetworkControl : UserControl
-    {
+    { 
         public ScanNetworkControl()
         {
             InitializeComponent();

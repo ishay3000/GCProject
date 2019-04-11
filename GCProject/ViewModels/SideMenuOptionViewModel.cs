@@ -14,8 +14,11 @@ namespace GCProject.ViewModels
 	public class SideMenuOptionViewModel : BaseViewModel
 	{
 		public ObservableCollection<SideMenuOptionModel> SideMenuOptions { get; set; }
+		private static readonly SideMenuOptionViewModel Instance = new SideMenuOptionViewModel();
 
-		public SideMenuOptionViewModel()
+		public static SideMenuOptionViewModel INSTANCE => Instance;
+
+		private SideMenuOptionViewModel()
 		{
 			SideMenuOptions = new ObservableCollection<SideMenuOptionModel>();
 
