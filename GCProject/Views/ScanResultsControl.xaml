@@ -4,9 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GCProject.Views"
+             xmlns:data="clr-namespace:GCProject.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
+	<!--<UserControl.Resources>
+		<ResourceDictionary>
+			<DataTemplate DataType="{x:Type data:ScanResultsModel}">
+				<
+			</DataTemplate>
+		</ResourceDictionary>
+	</UserControl.Resources>-->
+
 	<Grid>
-		<DataGrid x:Name="NumbersGrid" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="300"/>
+		<DataGrid x:Name="NumbersGrid" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="300">
+			<DataGrid.Columns>
+				<!--<DataGridTextColumn Header="Number" Binding="{Binding Number}"/>-->
+			</DataGrid.Columns>
+		</DataGrid>
 	</Grid>
 </UserControl>

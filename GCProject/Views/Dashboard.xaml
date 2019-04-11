@@ -75,9 +75,9 @@
 				<ColumnDefinition Width="*"/>
 			</Grid.ColumnDefinitions>
 
-			<Label Foreground="DarkCyan" Content="{Binding Path=WindowTitle}"  HorizontalAlignment="Center" FontSize="50"></Label>
+			<Label Foreground="DarkCyan" Content="{Binding Path=WindowTitle, Mode=TwoWay}"  HorizontalAlignment="Center" FontSize="50"></Label>
 
-			<Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0 40 0 0"/>
+			<Frame x:Name="MainFrame" VerticalAlignment="Center" HorizontalAlignment="Center" NavigationUIVisibility="Hidden" Margin="0 40 0 0"/>
 
 			<Button x:Name="ButtonCloseMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5" Command="{Binding AnimOpenCommand}" Visibility="{Binding OpenMenuVisibility}">
 				<materialDesign:PackIcon Kind="Menu" Foreground="#FF3580BF"/>

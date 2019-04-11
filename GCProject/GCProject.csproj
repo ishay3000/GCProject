@@ -72,6 +72,7 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\ScanResultsViewModel.cs" />
     <Compile Include="Views\ScanNetworkControl.xaml.cs">
       <DependentUpon>ScanNetworkControl.xaml</DependentUpon>
     </Compile>

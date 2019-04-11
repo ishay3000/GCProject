@@ -35,7 +35,7 @@ namespace GCProject.ViewModels
 			set
 			{
 				_windowTitle = value;
-				OnPropertyChanged("MinimizeCommand");
+				OnPropertyChanged("WindowTitle");
 			}
 		}
 

@@ -14,7 +14,8 @@ namespace GCProject.miscellanies
 	public enum ControlsTitles
 	{
 		Cards,
-		Settings
+		Settings,
+		ScanResults
 	}
     static class FrameManager
     {
@@ -33,14 +34,15 @@ namespace GCProject.miscellanies
 	    {
 		    ControlsTitlesDict[ControlsTitles.Cards] = 
 			    new Tuple<UserControl, string>(new CustomCardControl(), "Welcome to Telephony Scanner");
-			
-	    }
+		    ControlsTitlesDict[ControlsTitles.ScanResults] =
+			    new Tuple<UserControl, string>(new ScanResultsControl(), "Scan Results");
+		}
 
 		/// <summary>
 		/// Moves the frame to a different page
 		/// </summary>
 		/// <param name="pageTitle">the page title</param>
-	    public static void MovePage(ControlsTitles pageTitle)
+		public static void MovePage(ControlsTitles pageTitle)
 	    {
 		    if (ControlsTitlesDict.ContainsKey(pageTitle))
 		    {

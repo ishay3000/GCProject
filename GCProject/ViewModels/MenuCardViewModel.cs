@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
 using GCProject.Commands;
+using GCProject.miscellanies;
 using GCProject.Models;
 
 namespace GCProject.ViewModels
@@ -46,7 +47,8 @@ namespace GCProject.ViewModels
 
 		private void ScanCommand()
 		{
-			MessageBox.Show("Network scanning not is implemented yet.");
+			//MessageBox.Show("Network scanning not is implemented yet.");
+			FrameManager.MovePage(ControlsTitles.ScanResults);
 		}
 
 		// TODO reserved for future use (?)

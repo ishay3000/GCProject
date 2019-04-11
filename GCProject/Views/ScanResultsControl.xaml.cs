@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GCProject.ViewModels;
 
 namespace GCProject.Views
 {
@@ -23,6 +24,7 @@ namespace GCProject.Views
 		public ScanResultsControl()
 		{
 			InitializeComponent();
+			DataContext = ScanResultsViewModel.INSTANCE;
 		}
 	}
 }
