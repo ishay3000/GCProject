@@ -61,7 +61,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Miscellanies\BaseUserControl.cs" />
+    <Compile Include="Miscellanies\Client.cs" />
+    <Compile Include="Miscellanies\Extensions.cs" />
     <Compile Include="Miscellanies\FrameManager.cs" />
+    <Compile Include="Miscellanies\Server.cs" />
+    <Compile Include="Models\ScanResultsModel.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />
     <Compile Include="Models\MenuCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -70,6 +74,9 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Views\ScanNetworkControl.xaml.cs">
       <DependentUpon>ScanNetworkControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScanResultsControl.xaml.cs">
+      <DependentUpon>ScanResultsControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Resources\Resource Dictionaries\CardResource.xaml">
       <SubType>Designer</SubType>
@@ -115,6 +122,10 @@
       <DependentUpon>DashboardListViewControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ScanNetworkControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ScanResultsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
