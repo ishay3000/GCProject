@@ -25,11 +25,10 @@ namespace GCProject.ViewModels
 
 		private void LoadDummyResults()
 		{
-			var numbers = (from x in Enumerable.Range(7000, 7010)
-				let rnd = new Random(0)
-				select x).ToList();
-
-			var tmp = (numbers.AsParallel().AsOrdered()).ToList();
+			Random rnd = new Random(0);
+			var numbers = Enumerable.Range(0, 30)
+				.Select(r => rnd.Next(7000, 7020))
+				.ToList().AsParallel().AsOrdered();
 
 			foreach (int number in numbers)
 			{
