@@ -18,6 +18,7 @@ namespace GCProject.ViewModels
 		public ObservableCollection<ScanResultsModel> ScanResults { get; set; }
 		public RelayCommand NewScanCommand { get; set; }
 		public RelayCommand PreviousScanCommand { get; set; }
+		public RelayCommand ToggleMenuCommand { get; set; }
 		private Visibility _gridVisibility, _menuVisibility;
 
 		public Visibility GridVisibility
@@ -54,6 +55,13 @@ namespace GCProject.ViewModels
 			LoadButtonsCommands();
 		}
 
+		private void ToggleMenu()
+		{
+			Visibility tempVisibility = MenuVisibility;
+			MenuVisibility = GridVisibility;
+			GridVisibility = tempVisibility;
+		}
+
 		private void ShowMenu()
 		{
 			MenuVisibility = Visibility.Visible;
@@ -72,16 +80,20 @@ namespace GCProject.ViewModels
 			{
 				await NewScan();
 			});
+
 			PreviousScanCommand = new RelayCommand(o => true, o => PreviousScan());
+
+			ToggleMenuCommand = new RelayCommand(o => true, o => ToggleMenu());
 		}
 
 		private async Task NewScan()
 		{
 			//MessageBox.Show("New scan not implemented yet");
 			LoadDummyResults();
-			Dictionary<string, string> requestDictionary = new Dictionary<string, string>();
-			requestDictionary.Add("Command", "Scan");
-			requestDictionary.Add("Args", "New");
+			Dictionary<string, string> requestDictionary = new Dictionary<string, string>
+			{
+				{"Command", "Scan"}, {"Args", "New"}
+			};
 
 			string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
 			dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
