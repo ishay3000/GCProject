@@ -8,12 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using GCProject.Annotations;
+using Newtonsoft.Json;
 
 namespace GCProject.Miscellanies
 {
 	class Client : INotifyPropertyChanged
 	{
 		#region members
+
+		private static readonly Client Instance = new Client();
+		public static Client INSTANCE => Instance;
+
 		private TcpClient _client;
 		private NetworkStream _ns;
 		private const int Port = 8090;
@@ -21,6 +26,7 @@ namespace GCProject.Miscellanies
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		#endregion
+
 
 		public void RaisePropertyChanged(string propertyName)
 		{
@@ -39,14 +45,23 @@ namespace GCProject.Miscellanies
 			}
 		}
 
-		public Client()
+		private Client()
 		{
 			_client = new TcpClient();
 		}
 
-		private async Task ConnectAsync()
+		private async Task<bool> ConnectAsync()
 		{
-			await _client.ConnectAsync(IPAddress.Parse(Ip), Port);
+			try
+			{
+				await _client.ConnectAsync(IPAddress.Parse(Ip), Port);
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.Message);
+				return false;
+			}
 		}
 
 		private async Task WriteAllBytesAsync(byte[] buffer)
@@ -54,21 +69,29 @@ namespace GCProject.Miscellanies
 			await _ns.WriteAsync(buffer, 0, buffer.Length);
 		}
 
-		private async Task SendRequestAsync(string jsonRequest)
+		private async Task<bool> SendRequestAsync(string jsonRequest)
 		{
-			await ConnectAsync();
+			bool hasConnected = await ConnectAsync();
+			if (!hasConnected)
+			{
+				return false;
+			}
 			_ns = _client.GetStream();
 			byte[] bufferBytes = jsonRequest.GetStringAsBytes();
 
 			await WriteAllBytesAsync(bufferBytes);
+			return true;
 		}
 
 		private async Task<string> ReceiveResponseAsync()
 		{
 			byte[] bufferBytes = new byte[4096];
-			await _ns.ReadAsync(bufferBytes, 0, bufferBytes.Length);
+			int bytesRead = await _ns.ReadAsync(bufferBytes, 0, bufferBytes.Length);
+			byte[] res = new byte[bytesRead];
+			
+			Array.Copy(bufferBytes, res, bytesRead);
 
-			return bufferBytes.GetBytesAsString();
+			return res.GetBytesAsString();
 		}
 
 		/// <summary>
@@ -80,11 +103,23 @@ namespace GCProject.Miscellanies
 		{
 			return await Task.Run(async () =>
 			{
-				await SendRequestAsync(jsonRequest);
-				string response = await ReceiveResponseAsync();
+				Dictionary<string, string> responseDictionary = new Dictionary<string, string>();
+		
+				bool hasSent = await SendRequestAsync(jsonRequest);
+				if (!hasSent)
+				{
+					responseDictionary.Add("Status", "ERROR");
+					return JsonConvert.SerializeObject(responseDictionary);
+				}
 
+				string response = await ReceiveResponseAsync();
 				Close();
-				return response;
+
+				responseDictionary.Add("Status", "OK");
+				responseDictionary.Add("Result", response);
+				string result = JsonConvert.SerializeObject(responseDictionary);
+
+				return result;
 			});
 		}
 

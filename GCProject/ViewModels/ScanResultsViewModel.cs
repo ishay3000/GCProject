@@ -6,7 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using GCProject.Commands;
+using GCProject.Miscellanies;
 using GCProject.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace GCProject.ViewModels
 {
@@ -65,14 +68,39 @@ namespace GCProject.ViewModels
 
 		private void LoadButtonsCommands()
 		{
-			NewScanCommand = new RelayCommand(o => true, o => NewScan());
+			NewScanCommand = new RelayCommand(o => true, async (o) =>
+			{
+				await NewScan();
+			});
 			PreviousScanCommand = new RelayCommand(o => true, o => PreviousScan());
 		}
 
-		private void NewScan()
+		private async Task NewScan()
 		{
 			//MessageBox.Show("New scan not implemented yet");
 			LoadDummyResults();
+			Dictionary<string, string> requestDictionary = new Dictionary<string, string>();
+			requestDictionary.Add("Command", "Scan");
+			requestDictionary.Add("Args", "New");
+
+			string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
+			dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
+
+			var jobj = JObject.Parse(response);
+			string status = jobj["Status"];
+			
+
+			if (status == "OK")
+			{
+				// TODO iterate over the results and make a list of ScanResultsModels and add to collection
+				Console.WriteLine("Scan Results: \n" + jobj);
+			}
+
+			else
+			{
+				Console.WriteLine("Error retrieving scan results");
+			}
+
 			ShowGrid();
 		}
 
