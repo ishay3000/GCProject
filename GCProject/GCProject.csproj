@@ -64,7 +64,6 @@
     <Compile Include="Miscellanies\Client.cs" />
     <Compile Include="Miscellanies\Extensions.cs" />
     <Compile Include="Miscellanies\FrameManager.cs" />
-    <Compile Include="Miscellanies\Server.cs" />
     <Compile Include="Models\ScanResultsModel.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />
     <Compile Include="Models\MenuCardModel.cs" />

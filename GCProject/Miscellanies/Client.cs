@@ -26,13 +26,66 @@ namespace GCProject.Miscellanies
 		{
 			if (PropertyChanged != null)
 			{
-			PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+				PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 
-		public void Stop()
+		private void Close()
 		{
-			_client.Close();
+			if (_client.Connected)
+			{
+				_client.Close();
+				_ns.Close();
+			}
+		}
+
+		public Client()
+		{
+			_client = new TcpClient();
+		}
+
+		private async Task ConnectAsync()
+		{
+			await _client.ConnectAsync(IPAddress.Parse(Ip), Port);
+		}
+
+		private async Task WriteAllBytesAsync(byte[] buffer)
+		{
+			await _ns.WriteAsync(buffer, 0, buffer.Length);
+		}
+
+		private async Task SendRequestAsync(string jsonRequest)
+		{
+			await ConnectAsync();
+			_ns = _client.GetStream();
+			byte[] bufferBytes = jsonRequest.GetStringAsBytes();
+
+			await WriteAllBytesAsync(bufferBytes);
+		}
+
+		private async Task<string> ReceiveResponseAsync()
+		{
+			byte[] bufferBytes = new byte[4096];
+			await _ns.ReadAsync(bufferBytes, 0, bufferBytes.Length);
+
+			return bufferBytes.GetBytesAsString();
+		}
+
+		/// <summary>
+		/// Sends a request to the server and gets the response
+		/// </summary>
+		/// <param name="jsonRequest">a json formatted string request</param>
+		/// <returns>the server's response</returns>
+		public async Task<string> SendAndReceiveAsync(string jsonRequest)
+		{
+			return await Task.Run(async () =>
+			{
+				await SendRequestAsync(jsonRequest);
+				string response = await ReceiveResponseAsync();
+
+				Close();
+				return response;
+			});
 		}
 
 		//public async void RunAsync()
