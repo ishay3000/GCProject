@@ -8,6 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <DataGrid x:Name="ResultsDataGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}"></DataGrid>
+        <DataGrid x:Name="ResultsDataGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="300" />
     </Grid>
 </UserControl>

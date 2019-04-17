@@ -45,6 +45,13 @@ namespace GCProject.ViewModels
 			ScanResults = new ObservableCollection<ScanResultsModel>();
 		}
 
+        public void SetResults(List<int> numbersList)
+        {
+            foreach (int number in numbersList)
+            {
+                _scanResults.Add(new ScanResultsModel(number));
+            }
+        }
 
 		private void LoadDummyResults()
 		{
