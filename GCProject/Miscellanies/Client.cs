@@ -47,7 +47,7 @@ namespace GCProject.Miscellanies
 
 		private Client()
 		{
-			_client = new TcpClient();
+			//_client = new TcpClient();
 		}
 
 		private async Task<bool> ConnectAsync()
@@ -104,23 +104,25 @@ namespace GCProject.Miscellanies
 			return await Task.Run(async () =>
 			{
 				Dictionary<string, string> responseDictionary = new Dictionary<string, string>();
-		
-				bool hasSent = await SendRequestAsync(jsonRequest);
-				if (!hasSent)
-				{
-					responseDictionary.Add("Status", "ERROR");
-					return JsonConvert.SerializeObject(responseDictionary);
-				}
+                using (_client = new TcpClient())
+                {
+                    bool hasSent = await SendRequestAsync(jsonRequest);
+                    if (!hasSent)
+                    {
+                        responseDictionary.Add("Status", "ERROR");
+                        return JsonConvert.SerializeObject(responseDictionary);
+                    }
 
-				string response = await ReceiveResponseAsync();
-				Close();
+                    string response = await ReceiveResponseAsync();
+                    Close();
 
-				responseDictionary.Add("Status", "OK");
-				responseDictionary.Add("Result", response);
-				string result = JsonConvert.SerializeObject(responseDictionary);
+                    responseDictionary.Add("Status", "OK");
+                    responseDictionary.Add("Result", response);
+                    string result = JsonConvert.SerializeObject(responseDictionary);
 
-				return response;
-			});
+                    return response;
+                }
+            });
 		}
 
 		//public async void RunAsync()

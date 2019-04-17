@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using GCProject.Commands;
 using GCProject.Miscellanies;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ namespace GCProject.ViewModels
         private static readonly ScanFormViewModel Instance = new ScanFormViewModel();
         private RelayCommand _newScanCommand;
         private RelayCommand _previousScanCommand;
+        private List<int> _numbersList;
 
         public static ScanFormViewModel INSTANCE => Instance;
 
@@ -48,7 +50,7 @@ namespace GCProject.ViewModels
         {
             Task.Run((async () =>
             {
-                Dictionary<string, string> requestDictionary = new Dictionary<string, string>
+                var requestDictionary = new Dictionary<string, string>
                 {
                     {"Command", "Scan"}, {"Args", "New"}
                 };
@@ -56,24 +58,29 @@ namespace GCProject.ViewModels
                 string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
                 dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
 
-                /*
-                var jobj = JObject.Parse(response);
-                string status = jobj["Status"];
-                var jsonResult = jobj["Result"];
-                var result = JsonConvert.DeserializeObject<Results>(response);
-
-                if (status == "OK")
+                try
                 {
-                    // TODO iterate over the results and make a list of ScanResultsModels and add to collection
-                    Console.WriteLine("Scan Results: \n" + result);
-                }
+                    JObject responseJObject = JObject.Parse(response);
+                    var status = responseJObject["Status"];
 
-                else
+                    if (status.ToString() == "OK")
+                    {
+                        var numbers = responseJObject["Result"];
+                        foreach (var number in numbers)
+                        {
+                            _numbersList.Add(int.Parse(number.ToString()));
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Error scanning network");
+                    }
+                }
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Error retrieving scan results");
+                    Console.WriteLine(ex.Message);
                 }
-                */
-
             }));
         }
 

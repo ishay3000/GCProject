@@ -24,7 +24,7 @@ namespace GCProject.Views
         public ScanFormControl()
         {
             InitializeComponent();
-			DataContext = ScanResultsViewModel.INSTANCE;
+			DataContext = ScanFormViewModel.INSTANCE;
         }
     }
 }
