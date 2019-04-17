@@ -56,25 +56,21 @@ namespace GCProject.ViewModels
                 };
 
                 string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
-                dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
+                string response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
 
                 try
                 {
-                    JObject responseJObject = JObject.Parse(response);
-                    var status = responseJObject["Status"];
 
-                    if (status.ToString() == "OK")
+                    dynamic result = JsonConvert.DeserializeObject(response);
+                    var status = result["Status"];
+
+                    if (status != null && status.ToString() == "OK")
                     {
-                        var numbers = responseJObject["Result"];
+                        var numbers = result["Result"];
                         foreach (var number in numbers)
                         {
                             _numbersList.Add(int.Parse(number.ToString()));
                         }
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("Error scanning network");
                     }
                 }
                 catch (Exception ex)
