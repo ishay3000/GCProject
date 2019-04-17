@@ -12,13 +12,8 @@ namespace GCProject.ViewModels
 	class WindowViewModel : BaseViewModel
 	{
 		private ICommand _minimizeCommand;
-		private ICommand _maximizeCommand;
-		private ICommand _closeCommand;
 
-		private ICommand _animOpenCommand;
-		private ICommand _animCloseCommand;
-
-		private Visibility _openMenuVisibility;
+        private Visibility _openMenuVisibility;
 		private Visibility _closeMenuVisibility;
 
 		private WindowState _windowState;
@@ -30,80 +25,64 @@ namespace GCProject.ViewModels
 		#region Props
 
 		public string WindowTitle
-		{
-			get => _windowTitle;
-			set
+        {
+            get { return _windowTitle; }
+            set
 			{
 				_windowTitle = value;
 				OnPropertyChanged("WindowTitle");
 			}
-		}
+        }
 
-	public ICommand MinimizeCommand
-		{
-			get => _minimizeCommand;
-			set
+        public ICommand MinimizeCommand
+    {
+        get { return _minimizeCommand; }
+        set
 			{
 				_minimizeCommand = value;
 				OnPropertyChanged("MinimizeCommand");
 			}
-		}
+    }
 
-		public ICommand MaximizeCommand
-		{
-			get => _maximizeCommand;
-			set => _maximizeCommand = value;
-		}
+        public ICommand MaximizeCommand { get; set; }
 
-		public ICommand CloseCommand
-		{
-			get => _closeCommand;
-			set => _closeCommand = value;
-		}
+        public ICommand CloseCommand { get; set; }
 
-		public WindowState WindowState
-		{
-			get => _windowState;
-			set
+        public WindowState WindowState
+        {
+            get { return _windowState; }
+            set
 			{
 				_windowState = value;
 				OnPropertyChanged("WindowState");
 			}
-		}
+        }
 
-		public ICommand AnimOpenCommand
-		{
-			get => _animOpenCommand;
-			set =>_animOpenCommand = value;
-		}
+        public ICommand AnimOpenCommand { get; set; }
 
-		public ICommand AnimCloseCommand
-		{
-			get => _animCloseCommand;
-			set => _animCloseCommand = value;
-		}
+        public ICommand AnimCloseCommand { get; set; }
 
-		public Visibility OpenMenuVisibility
-		{
-			get => _openMenuVisibility;
-			set
+        public Visibility OpenMenuVisibility
+        {
+            get { return _openMenuVisibility; }
+            set
 			{
 				_openMenuVisibility = value;
 				OnPropertyChanged("OpenMenuVisibility");
 			}
-		}
+        }
 
-		public Visibility CloseMenuVisibility
-		{
-			get => _closeMenuVisibility;
-			set
+        public Visibility CloseMenuVisibility
+        {
+            get { return _closeMenuVisibility; }
+            set
 			{
 				_closeMenuVisibility = value;
 				OnPropertyChanged("CloseMenuVisibility");
 			}
-		}
+        }
 
-		#endregion
+        #endregion
 
 		#region Window State Events
 
@@ -150,10 +129,10 @@ namespace GCProject.ViewModels
 		private WindowViewModel()
 		{
 			_minimizeCommand = new RelayCommand((o => true), OnMinimize);
-			_maximizeCommand = new RelayCommand((o => true), OnMaximize);
-			_closeCommand = new RelayCommand((o => true), OnClose);
-			_animOpenCommand = new RelayCommand(o => true, OnOpenAnim);
-			_animCloseCommand = new RelayCommand(o => true, OnCloseAnim);
+			MaximizeCommand = new RelayCommand((o => true), OnMaximize);
+			CloseCommand = new RelayCommand((o => true), OnClose);
+			AnimOpenCommand = new RelayCommand(o => true, OnOpenAnim);
+			AnimCloseCommand = new RelayCommand(o => true, OnCloseAnim);
 		}
 	}
 }

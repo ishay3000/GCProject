@@ -10,11 +10,8 @@ namespace GCProject.Models
 	public class MenuCardModel
 	{
 		private string _cardText;
-		private string _imagePath;
-		private string _cardDescription;
-		private RelayCommand _command;
 
-		public MenuCardModel()
+        public MenuCardModel()
 		{
 		}
 
@@ -29,34 +26,27 @@ namespace GCProject.Models
 		public MenuCardModel(string cardText, string imagePath, string cardDescription, RelayCommand command)
 		{
 			_cardText = cardText;
-			_imagePath = imagePath;
-			_cardDescription = cardDescription;
-			_command = command;
+			ImagePath = imagePath;
+			CardDescription = cardDescription;
+			Command = command;
 		}
-
 
 		public string CardText
-		{
-			get => _cardText;
-			set => _cardText = value;
-		}
+        {
+            get
+            {
+                return _cardText;
+            }
+            set
+            {
+                _cardText = value;
+            }
+        }
 
-		public string ImagePath
-		{
-			get => _imagePath;
-			set => _imagePath = value;
-		}
+        public string ImagePath { get; set; }
 
-		public string CardDescription
-		{
-			get => _cardDescription;
-			set => _cardDescription = value;
-		}
+        public string CardDescription { get; set; }
 
-		public RelayCommand Command
-		{
-			get => _command;
-			set => _command = value;
-		}
-	}
+        public RelayCommand Command { get; set; }
+    }
 }

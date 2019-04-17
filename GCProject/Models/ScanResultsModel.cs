@@ -12,12 +12,12 @@ namespace GCProject.Models
 		private int _number;
 
 		public int Number
-		{
-			get => _number;
-			set => _number = value;
-		}
+        {
+            get { return _number; }
+            set { _number = value; }
+        }
 
-		public ScanResultsModel(int number)
+        public ScanResultsModel(int number)
 		{
 			_number = number;
 		}

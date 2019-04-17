@@ -59,9 +59,9 @@ namespace GCProject.ViewModels
 		}*/
 
 		public string CardText
-		{
-			get => _cardText;
-			set
+        {
+            get { return _cardText; }
+            set
 			{
 				if (_cardText != value)
 				{
@@ -69,12 +69,12 @@ namespace GCProject.ViewModels
 					OnPropertyChanged("CardText");
 				}
 			}
-		}
+        }
 
-		public string ImagePath
-		{
-			get => _imagePath;
-			set
+        public string ImagePath
+        {
+            get { return _imagePath; }
+            set
 			{
 				if (_imagePath != value)
 				{
@@ -82,12 +82,12 @@ namespace GCProject.ViewModels
 					OnPropertyChanged("ImagePath");
 				}
 			}
-		}
+        }
 
-		public string CardDescription
-		{
-			get => _cardDescription;
-			set
+        public string CardDescription
+        {
+            get { return _cardDescription; }
+            set
 			{
 				if (_cardDescription != value)
 				{
@@ -95,8 +95,8 @@ namespace GCProject.ViewModels
 					OnPropertyChanged("CardDescription");
 				}
 			}
-		}
+        }
 
-		public ObservableCollection<MenuCardModel> Cards => _cards;
+        public ObservableCollection<MenuCardModel> Cards => _cards;
 	}
 }

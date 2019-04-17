@@ -22,27 +22,27 @@ namespace GCProject.ViewModels
 		private Visibility _gridVisibility, _menuVisibility;
 
 		public Visibility GridVisibility
-		{
-			get => _gridVisibility;
-			set
+        {
+            get { return _gridVisibility; }
+            set
 			{
 				_gridVisibility = value;
 				OnPropertyChanged("GridVisibility");
 			}
-		}
+        }
 
-		public Visibility MenuVisibility
-		{
-			get => _menuVisibility;
-			set
+        public Visibility MenuVisibility
+        {
+            get { return _menuVisibility; }
+            set
 			{
 				_menuVisibility = value;
 				OnPropertyChanged("MenuVisibility");
 			}
-		}
+        }
 
 
-		private static readonly ScanResultsViewModel Instance = new ScanResultsViewModel();
+        private static readonly ScanResultsViewModel Instance = new ScanResultsViewModel();
 
 		public static ScanResultsViewModel INSTANCE => Instance;
 
