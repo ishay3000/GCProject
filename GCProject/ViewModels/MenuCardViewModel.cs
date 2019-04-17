@@ -30,12 +30,13 @@ namespace GCProject.ViewModels
 		private void LoadCards()
 		{
 			_cards.Add(new MenuCardModel("Call Manager",
-				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\Call_Manager.png",
+				@"../Resources/Images/Scroll view images/Call_Manager.png",
 				"Initiate a Call Manager software (using Dialogic Global Call)",
 				new RelayCommand(o => true, o => StenographyCommand())));
-
+			
+			//"../Resources/Images/Scroll view images/Call_Manager.png"
 			_cards.Add(new MenuCardModel("Scan Network",
-				@"C:\Users\Ishay Cena\Documents\Visual Studio 2017\Projects\GCProject\GCProject\Resources\Images\Scroll view images\2014_security_scanning.png",
+				@"../Resources/Images/Scroll view images/2014_security_scanning.png",
 				"Scan the network for Telephony devices",
 				new RelayCommand(o => true, o => ScanCommand())));
 		}
@@ -95,19 +96,6 @@ namespace GCProject.ViewModels
 				}
 			}
 		}
-
-		//public ICommand CardCommand
-		//{
-		//	get => _cardCommand;
-		//	//set
-		//	//{
-		//	//	if (_cardCommand != value)
-		//	//	{
-		//	//		_cardCommand = value;
-		//	//		OnPropertyChanged("CardCommand");
-		//	//	}
-		//	//}
-		//}
 
 		public ObservableCollection<MenuCardModel> Cards => _cards;
 	}

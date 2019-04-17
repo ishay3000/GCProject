@@ -40,8 +40,8 @@ namespace GCProject.Miscellanies
 		{
 			if (_client.Connected)
 			{
-				_client.Close();
 				_ns.Close();
+				_client.Close();
 			}
 		}
 
@@ -119,7 +119,7 @@ namespace GCProject.Miscellanies
 				responseDictionary.Add("Result", response);
 				string result = JsonConvert.SerializeObject(responseDictionary);
 
-				return result;
+				return response;
 			});
 		}
 

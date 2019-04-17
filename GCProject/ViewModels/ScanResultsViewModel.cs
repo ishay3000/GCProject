@@ -86,6 +86,17 @@ namespace GCProject.ViewModels
 			ToggleMenuCommand = new RelayCommand(o => true, o => ToggleMenu());
 		}
 
+		class Numbers
+		{
+			private List<int> numbers;
+		}
+		class Results
+		{
+			private Numbers Result { get; set; }
+			private string Status { get; set; }
+
+		}
+
 		private async Task NewScan()
 		{
 			//MessageBox.Show("New scan not implemented yet");
@@ -100,12 +111,13 @@ namespace GCProject.ViewModels
 
 			var jobj = JObject.Parse(response);
 			string status = jobj["Status"];
-			
+			var jsonResult = jobj["Result"];
+			var result = JsonConvert.DeserializeObject<Results>(response);
 
 			if (status == "OK")
 			{
 				// TODO iterate over the results and make a list of ScanResultsModels and add to collection
-				Console.WriteLine("Scan Results: \n" + jobj);
+				Console.WriteLine("Scan Results: \n" + result);
 			}
 
 			else

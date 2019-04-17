@@ -17,7 +17,7 @@
 	</UserControl.Resources>-->
 
 	<Grid HorizontalAlignment="Center">
-		<DataGrid x:Name="NumbersGrid" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="300" Margin="0,52,0,0">
+		<DataGrid x:Name="NumbersGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="300" Margin="6,54,-26,0">
 			<DataGrid.Columns>
 				<!--<DataGridTextColumn Header="Number" Binding="{Binding Number}"/>-->
 			</DataGrid.Columns>
