@@ -9,14 +9,14 @@ namespace GCProject.Miscellanies
 {
     static class TelephonyScanner
     {
-        public static async Task<List<int>> ScanAsyncTask()
+        public static async Task<List<int>> ScanAsyncTask(object args)
         {
             return await Task.Run(async () =>
             {
-                var requestDictionary = new Dictionary<string, string>
-                {
-                    {"Command", "Scan"}, {"Args", "New"}
-                };
+                var requestDictionary = new Dictionary<string, object>();
+                requestDictionary["Command"] = "Scan";
+                requestDictionary["Args"] = args;
+
                 List<int> numbersList = null;
 
                 string jsonRequest = JsonConvert.SerializeObject(requestDictionary);

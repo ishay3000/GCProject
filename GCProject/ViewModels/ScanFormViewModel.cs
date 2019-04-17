@@ -19,8 +19,10 @@ namespace GCProject.ViewModels
         private static readonly ScanFormViewModel Instance = new ScanFormViewModel();
         private RelayCommand _newScanCommand;
         private RelayCommand _previousScanCommand;
-        public List<int> NumbersList;
+        private string _startText;
+        private string _endText;
 
+        public List<int> NumbersList;
         public static ScanFormViewModel INSTANCE => Instance;
 
         #endregion
@@ -45,6 +47,25 @@ namespace GCProject.ViewModels
             set { _previousScanCommand = value; }
         }
 
+        public string StartText
+        {
+            get { return _startText; }
+            set
+            {
+                _startText = value;
+                OnPropertyChanged("StartText");
+            }
+        }
+
+        public string EndText
+        {
+            get { return _endText; }
+            set
+            {
+                _endText = value;
+                OnPropertyChanged("EndText");
+            }
+        }
 
         #endregion
 
@@ -56,7 +77,14 @@ namespace GCProject.ViewModels
 
         private async void NewScan()
         {
-            var numbers = await TelephonyScanner.ScanAsyncTask();
+            var requestArgs = new Dictionary<string, object>();
+            requestArgs["ScanType"] = "New";
+            requestArgs["ScanRange"] = new { Start = int.Parse(_startText), End = int.Parse(_endText) };
+
+
+               // new Tuple<int, int>(int.Parse(_startText), int.Parse(_endText));
+
+            var numbers = await TelephonyScanner.ScanAsyncTask(requestArgs);
             if (numbers != null)
             {
                 ShowResultsPage(numbers);
