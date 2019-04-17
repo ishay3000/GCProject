@@ -78,12 +78,10 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
+    <Compile Include="ViewModels\ScanFormViewModel.cs" />
     <Compile Include="ViewModels\ScanResultsViewModel.cs" />
     <Compile Include="Views\ScanFormControl.xaml.cs">
       <DependentUpon>ScanFormControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ScanNetworkControl.xaml.cs">
-      <DependentUpon>ScanNetworkControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScanResultsControl.xaml.cs">
       <DependentUpon>ScanResultsControl.xaml</DependentUpon>
@@ -132,10 +130,6 @@
       <DependentUpon>DashboardListViewControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\ScanFormControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ScanNetworkControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
