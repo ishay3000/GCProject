@@ -76,17 +76,14 @@ namespace GCProject.ViewModels
 
 		private void LoadButtonsCommands()
 		{
-			NewScanCommand = new RelayCommand(o => true, async (o) =>
-			{
-				await NewScan();
-			});
+			NewScanCommand = new RelayCommand(NewScan);
 
-			PreviousScanCommand = new RelayCommand(o => true, o => PreviousScan());
+			PreviousScanCommand = new RelayCommand(PreviousScan);
 
-			ToggleMenuCommand = new RelayCommand(o => true, o => ToggleMenu());
+			ToggleMenuCommand = new RelayCommand(ToggleMenu);
 		}
 
-		class Numbers
+        class Numbers
 		{
 			private List<int> numbers;
 		}
@@ -97,35 +94,36 @@ namespace GCProject.ViewModels
 
 		}
 
-		private async Task NewScan()
-		{
-			//MessageBox.Show("New scan not implemented yet");
-			LoadDummyResults();
-			Dictionary<string, string> requestDictionary = new Dictionary<string, string>
-			{
-				{"Command", "Scan"}, {"Args", "New"}
-			};
+		private void NewScan()
+        {
+            Task.Run((async () =>
+            {
+                Dictionary<string, string> requestDictionary = new Dictionary<string, string>
+                {
+                    {"Command", "Scan"}, {"Args", "New"}
+                };
 
-			string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
-			dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
+                string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
+                dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
 
-			var jobj = JObject.Parse(response);
-			string status = jobj["Status"];
-			var jsonResult = jobj["Result"];
-			var result = JsonConvert.DeserializeObject<Results>(response);
+                var jobj = JObject.Parse(response);
+                string status = jobj["Status"];
+                var jsonResult = jobj["Result"];
+                var result = JsonConvert.DeserializeObject<Results>(response);
 
-			if (status == "OK")
-			{
-				// TODO iterate over the results and make a list of ScanResultsModels and add to collection
-				Console.WriteLine("Scan Results: \n" + result);
-			}
+                if (status == "OK")
+                {
+                    // TODO iterate over the results and make a list of ScanResultsModels and add to collection
+                    Console.WriteLine("Scan Results: \n" + result);
+                }
 
-			else
-			{
-				Console.WriteLine("Error retrieving scan results");
-			}
+                else
+                {
+                    Console.WriteLine("Error retrieving scan results");
+                }
 
-			ShowGrid();
+                ShowGrid();
+            }));
 		}
 
 		private void PreviousScan()

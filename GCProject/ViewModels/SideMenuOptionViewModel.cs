@@ -30,9 +30,15 @@ namespace GCProject.ViewModels
 		/// </summary>
 		private void LoadMenuOptions()
 		{
-			RelayCommand home = new RelayCommand(o => true, o => FrameManager.MovePage(ControlsTitles.Cards));
-			RelayCommand settings = new RelayCommand(o => true, o => FrameManager.MovePage(ControlsTitles.Settings));
-			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Home, "Home", home));
+			RelayCommand home = new RelayCommand( () => 
+            {
+                FrameManager.MovePage(ControlsTitles.Cards);
+            });
+			RelayCommand settings = new RelayCommand(() =>
+            {
+                FrameManager.MovePage(ControlsTitles.Settings);
+            });
+            SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Home, "Home", home));
 			SideMenuOptions.Add(new SideMenuOptionModel(PackIconKind.Settings, "Settings", settings));
 		}
 	}

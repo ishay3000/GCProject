@@ -128,11 +128,26 @@ namespace GCProject.ViewModels
 
 		private WindowViewModel()
 		{
-			_minimizeCommand = new RelayCommand((o => true), OnMinimize);
-			MaximizeCommand = new RelayCommand((o => true), OnMaximize);
-			CloseCommand = new RelayCommand((o => true), OnClose);
-			AnimOpenCommand = new RelayCommand(o => true, OnOpenAnim);
-			AnimCloseCommand = new RelayCommand(o => true, OnCloseAnim);
-		}
+			_minimizeCommand = new RelayCommand(() =>
+            {
+                OnMinimize(null);
+            });
+            MaximizeCommand = new RelayCommand(() =>
+            {
+                OnMaximize(null);
+            });
+            CloseCommand = new RelayCommand(() =>
+            {
+                OnClose(null);
+            });
+            AnimOpenCommand = new RelayCommand(() =>
+            {
+                OnOpenAnim(null);
+            });
+            AnimCloseCommand = new RelayCommand(() =>
+            {
+                OnCloseAnim(null);
+            });
+        }
 	}
 }
