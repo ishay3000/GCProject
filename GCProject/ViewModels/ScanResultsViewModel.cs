@@ -15,121 +15,36 @@ namespace GCProject.ViewModels
 {
 	class ScanResultsViewModel : BaseViewModel
 	{
-		public ObservableCollection<ScanResultsModel> ScanResults { get; set; }
-		public RelayCommand NewScanCommand { get; set; }
-		public RelayCommand PreviousScanCommand { get; set; }
-		public RelayCommand ToggleMenuCommand { get; set; }
-		private Visibility _gridVisibility, _menuVisibility;
+        #region Members
+        private ObservableCollection<ScanResultsModel> _scanResults;
 
-		public Visibility GridVisibility
+        #endregion
+
+
+        #region Props
+        public ObservableCollection<ScanResultsModel> ScanResults
         {
-            get { return _gridVisibility; }
+            get { return _scanResults; }
             set
-			{
-				_gridVisibility = value;
-				OnPropertyChanged("GridVisibility");
-			}
+            {
+                _scanResults = value;
+                OnPropertyChanged("ScanResults");
+            }
         }
 
-        public Visibility MenuVisibility
-        {
-            get { return _menuVisibility; }
-            set
-			{
-				_menuVisibility = value;
-				OnPropertyChanged("MenuVisibility");
-			}
-        }
+        #endregion
+
 
 
         private static readonly ScanResultsViewModel Instance = new ScanResultsViewModel();
 
-		public static ScanResultsViewModel INSTANCE => Instance;
+        public static ScanResultsViewModel INSTANCE => Instance;
 
 		private ScanResultsViewModel()
 		{
 			ScanResults = new ObservableCollection<ScanResultsModel>();
-			ShowMenu();
-
-			LoadDummyResults();
-			LoadButtonsCommands();
 		}
 
-		private void ToggleMenu()
-		{
-			Visibility tempVisibility = MenuVisibility;
-			MenuVisibility = GridVisibility;
-			GridVisibility = tempVisibility;
-		}
-
-		private void ShowMenu()
-		{
-			MenuVisibility = Visibility.Visible;
-			GridVisibility = Visibility.Hidden;
-		}
-
-		private void ShowGrid()
-		{
-			MenuVisibility = Visibility.Hidden;
-			GridVisibility = Visibility.Visible;
-		}
-
-		private void LoadButtonsCommands()
-		{
-			NewScanCommand = new RelayCommand(NewScan);
-
-			PreviousScanCommand = new RelayCommand(PreviousScan);
-
-			ToggleMenuCommand = new RelayCommand(ToggleMenu);
-		}
-
-        class Numbers
-		{
-			private List<int> numbers;
-		}
-		class Results
-		{
-			private Numbers Result { get; set; }
-			private string Status { get; set; }
-
-		}
-
-		private void NewScan()
-        {
-            Task.Run((async () =>
-            {
-                Dictionary<string, string> requestDictionary = new Dictionary<string, string>
-                {
-                    {"Command", "Scan"}, {"Args", "New"}
-                };
-
-                string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
-                dynamic response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
-
-                var jobj = JObject.Parse(response);
-                string status = jobj["Status"];
-                var jsonResult = jobj["Result"];
-                var result = JsonConvert.DeserializeObject<Results>(response);
-
-                if (status == "OK")
-                {
-                    // TODO iterate over the results and make a list of ScanResultsModels and add to collection
-                    Console.WriteLine("Scan Results: \n" + result);
-                }
-
-                else
-                {
-                    Console.WriteLine("Error retrieving scan results");
-                }
-
-                ShowGrid();
-            }));
-		}
-
-		private void PreviousScan()
-		{
-			MessageBox.Show("Previous scan not implemented yet");
-		}
 
 		private void LoadDummyResults()
 		{
