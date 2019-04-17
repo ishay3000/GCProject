@@ -7,7 +7,15 @@
              xmlns:data="clr-namespace:GCProject.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <DataGrid x:Name="ResultsDataGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}"></DataGrid>
+
+    <Grid HorizontalAlignment="Center">
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,88,0,0"/>
+        <Label Content="Start" Style="{DynamicResource MaterialDesignLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,57,0,0"/>
+
+        <TextBox HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignTextBox}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="154,88,0,0"/>
+        <Label Content="End" Style="{DynamicResource MaterialDesignLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,57,0,0"/>
+
+        <Button Content="Previous Scan" Command="{Binding Path=PreviousScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
+        <Button Content="New Scan" Command="{Binding Path=NewScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="154,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
     </Grid>
 </UserControl>
