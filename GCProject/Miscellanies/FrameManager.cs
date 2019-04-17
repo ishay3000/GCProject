@@ -43,7 +43,7 @@ namespace GCProject.miscellanies
                 new Tuple<UserControl, string>(new ScanResultsControl(), "Scan Results");
 
             ControlsTitlesDict[ControlsTitles.ScanForm] =
-                new Tuple<UserControl, string>(new ScanFormControl(), "Scan Results");
+                new Tuple<UserControl, string>(new ScanFormControl(), "Scan Form");
         }
 
         /// <summary>

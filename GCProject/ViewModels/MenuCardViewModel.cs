@@ -49,7 +49,7 @@ namespace GCProject.ViewModels
         private void ScanCommand()
         {
             //MessageBox.Show("Network scanning not is implemented yet.");
-            FrameManager.MovePage(ControlsTitles.ScanResults);
+            FrameManager.MovePage(ControlsTitles.ScanForm);
         }
 
         // TODO reserved for future use (?)
