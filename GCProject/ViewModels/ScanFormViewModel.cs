@@ -89,7 +89,6 @@ namespace GCProject.ViewModels
             _previousScanCommand = new RelayCommand(PreviousScan);
             _openFileDialogCommand = new RelayCommand(OpenFileDialog);
             NumbersList = new List<int>();
-            _whitelistNumbersList = new List<int>();
         }
 
 
@@ -105,14 +104,19 @@ namespace GCProject.ViewModels
             if (dialog.ShowDialog() == true)
             {
                 WhitelistFilePath = dialog.FileName;
+                Console.WriteLine("Reading whitelist at path: " + WhitelistFilePath);
                 await Task.Run(async () =>
                 {
                    _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
                 });
-
-                foreach (int i in _whitelistNumbersList)
+                if (_whitelistNumbersList != null && _whitelistNumbersList.Count > 0)
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine("Finished reading whitelist. Numbers counts: " + _whitelistNumbersList.Count);
+                }
+
+                else
+                {
+                    Console.WriteLine("Error: Couldn't read whitelist");
                 }
             }
         }
