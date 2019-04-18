@@ -8,6 +8,7 @@ using System.Windows.Threading;
 using GCProject.Commands;
 using GCProject.miscellanies;
 using GCProject.Miscellanies;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -19,6 +20,8 @@ namespace GCProject.ViewModels
         private static readonly ScanFormViewModel Instance = new ScanFormViewModel();
         private RelayCommand _newScanCommand;
         private RelayCommand _previousScanCommand;
+        private RelayCommand _openFileDialogCommand;
+        private string _whitelistFilePath;
         private string _startText;
         private string _endText;
 
@@ -38,6 +41,22 @@ namespace GCProject.ViewModels
         {
             get { return _previousScanCommand; }
             set { _previousScanCommand = value; }
+        }
+
+        public RelayCommand OpenFileDialogCommand
+        {
+            get { return _openFileDialogCommand; }
+            set { _openFileDialogCommand = value; }
+        }
+
+        public string WhitelistFilePath
+        {
+            get { return _whitelistFilePath; }
+            set
+            {
+                _whitelistFilePath = value;
+                OnPropertyChanged("WhitelistFilePath");
+            }
         }
 
         public string StartText
@@ -67,6 +86,7 @@ namespace GCProject.ViewModels
         {
             _newScanCommand = new RelayCommand(NewScan);
             _previousScanCommand = new RelayCommand(PreviousScan);
+            _openFileDialogCommand = new RelayCommand(OpenFileDialog);
             NumbersList = new List<int>();
         }
 
@@ -75,6 +95,16 @@ namespace GCProject.ViewModels
         {
             ScanResultsViewModel.INSTANCE.SetResults(numbList);
             FrameManager.MovePage(ControlsTitles.ScanResults);
+        }
+
+        private void OpenFileDialog()
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                WhitelistFilePath = dialog.FileName;
+
+            }
         }
 
         private async void NewScan()
