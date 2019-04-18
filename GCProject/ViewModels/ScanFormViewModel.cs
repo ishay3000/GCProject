@@ -27,13 +27,6 @@ namespace GCProject.ViewModels
 
         #endregion
 
-        public ScanFormViewModel()
-        {
-            _newScanCommand = new RelayCommand(NewScan);
-            _previousScanCommand = new RelayCommand(PreviousScan);
-            NumbersList = new List<int>();
-        }
-
         #region props
         public RelayCommand NewScanCommand
         {
@@ -69,6 +62,15 @@ namespace GCProject.ViewModels
 
         #endregion
 
+
+        public ScanFormViewModel()
+        {
+            _newScanCommand = new RelayCommand(NewScan);
+            _previousScanCommand = new RelayCommand(PreviousScan);
+            NumbersList = new List<int>();
+        }
+
+
         private void ShowResultsPage(List<int> numbList)
         {
             ScanResultsViewModel.INSTANCE.SetResults(numbList);
@@ -80,10 +82,7 @@ namespace GCProject.ViewModels
             var requestArgs = new Dictionary<string, object>();
             requestArgs["ScanType"] = "New";
             requestArgs["ScanRange"] = new { Start = int.Parse(_startText), End = int.Parse(_endText) };
-
-
-               // new Tuple<int, int>(int.Parse(_startText), int.Parse(_endText));
-
+            
             var numbers = await TelephonyScanner.ScanAsyncTask(requestArgs);
             if (numbers != null)
             {
@@ -95,7 +94,7 @@ namespace GCProject.ViewModels
             }
         }
 
-        private void PreviousScan()
+        private async void PreviousScan()
         {
             // TODO implement previous scan logic
         }
