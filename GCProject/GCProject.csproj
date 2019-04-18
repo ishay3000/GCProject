@@ -71,6 +71,7 @@
     <Compile Include="Miscellanies\BaseUserControl.cs" />
     <Compile Include="Miscellanies\Client.cs" />
     <Compile Include="Miscellanies\Extensions.cs" />
+    <Compile Include="Miscellanies\FileReader.cs" />
     <Compile Include="Miscellanies\FrameManager.cs" />
     <Compile Include="Miscellanies\TelephonyScanner.cs" />
     <Compile Include="Models\ScanResultsModel.cs" />

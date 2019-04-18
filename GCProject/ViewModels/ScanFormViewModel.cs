@@ -26,6 +26,7 @@ namespace GCProject.ViewModels
         private string _endText;
 
         public List<int> NumbersList;
+        private List<int> _whitelistNumbersList;
         public static ScanFormViewModel INSTANCE => Instance;
 
         #endregion
@@ -88,6 +89,7 @@ namespace GCProject.ViewModels
             _previousScanCommand = new RelayCommand(PreviousScan);
             _openFileDialogCommand = new RelayCommand(OpenFileDialog);
             NumbersList = new List<int>();
+            _whitelistNumbersList = new List<int>();
         }
 
 
@@ -97,13 +99,21 @@ namespace GCProject.ViewModels
             FrameManager.MovePage(ControlsTitles.ScanResults);
         }
 
-        private void OpenFileDialog()
+        private async void OpenFileDialog()
         {
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == true)
             {
                 WhitelistFilePath = dialog.FileName;
+                await Task.Run(async () =>
+                {
+                   _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
+                });
 
+                foreach (int i in _whitelistNumbersList)
+                {
+                    Console.WriteLine(i);
+                }
             }
         }
 
