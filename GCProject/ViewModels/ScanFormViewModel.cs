@@ -141,6 +141,14 @@ namespace GCProject.ViewModels
         private async void PreviousScan()
         {
             // TODO implement previous scan logic
+            string input =
+                Microsoft.VisualBasic.Interaction.InputBox("Please choose the previous scan's name",
+                    "Scan name",
+                    "Test",
+                    -1, -1);
+
+            Console.WriteLine("Previous scan name: " + input);
+
         }
     }
 }

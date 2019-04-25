@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:GCProject.Views"
              xmlns:data="clr-namespace:GCProject.Models"
              mc:Ignorable="d" 
-             Width="300" Height="300">
+             Width="500" Height="500">
 
     <Grid HorizontalAlignment="Center">
         <TextBox HorizontalAlignment="Left" Text="{Binding Path=StartText, Mode=TwoWay}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,88,0,0"/>
@@ -20,7 +20,6 @@
 
         <TextBox Text="{Binding Path=WhitelistFilePath, Mode=OneWay}" HorizontalAlignment="Left" IsEnabled="False" Height="23" TextWrapping="Wrap" ToolTip="File path" VerticalAlignment="Top" Width="102" Margin="10,205,0,0"/>
         <Button Content="Choose whitelist" Command="{Binding Path=OpenFileDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Margin="124,200,0,0"/>
-
 
     </Grid>
 </UserControl>
