@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Windows.Threading;
 using GCProject.Commands;
 using GCProject.miscellanies;
 using GCProject.Miscellanies;
+using Microsoft.VisualBasic.Logging;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -107,7 +109,7 @@ namespace GCProject.ViewModels
                 Console.WriteLine("Reading whitelist at path: " + WhitelistFilePath);
                 await Task.Run(async () =>
                 {
-                   _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
+                    _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
                 });
                 if (_whitelistNumbersList != null && _whitelistNumbersList.Count > 0)
                 {
@@ -123,11 +125,14 @@ namespace GCProject.ViewModels
 
         private async void NewScan()
         {
-            var requestArgs = new Dictionary<string, object>();
-            requestArgs["ScanType"] = "New";
-            requestArgs["ScanRange"] = new { Start = int.Parse(_startText), End = int.Parse(_endText) };
+            // TODO perhaps consider using builder pattern instead ?
+            string request = new JRequestBuilder()
+                .SetScanType("New")
+                .SetScanArgs(new {Start = int.Parse(_startText), End = int.Parse(_endText)})
+                .Build()
+                .ToJson();
             
-            var numbers = await TelephonyScanner.ScanAsyncTask(requestArgs);
+            var numbers = await TelephonyScanner.ScanAsyncTask(request);
             if (numbers != null)
             {
                 ShowResultsPage(numbers);
@@ -147,8 +152,25 @@ namespace GCProject.ViewModels
                     "Test",
                     -1, -1);
 
-            Console.WriteLine("Previous scan name: " + input);
+            if (!string.IsNullOrEmpty(input))
+            {
+                string request = JRequestBuilder
+                    .CreateNew()
+                    .SetScanType("Previous")
+                    .SetScanArgs(new {ScanName = input})
+                    .Build()
+                    .ToJson();
 
+                var numbers = await TelephonyScanner.ScanAsyncTask(request);
+                if (numbers != null)
+                {
+                    ShowResultsPage(numbers);
+                }
+                else
+                {
+                    Console.WriteLine("Couldn't find numbers");
+                }
+            }
         }
     }
 }

@@ -77,6 +77,11 @@
     <Compile Include="Miscellanies\Extensions.cs" />
     <Compile Include="Miscellanies\FileReader.cs" />
     <Compile Include="Miscellanies\FrameManager.cs" />
+    <Compile Include="Miscellanies\IJRequestBuilder.cs" />
+    <Compile Include="Miscellanies\IJRequestScanArgs.cs" />
+    <Compile Include="Miscellanies\IJRequestScanType.cs" />
+    <Compile Include="Miscellanies\JRequest.cs" />
+    <Compile Include="Miscellanies\JRequestBuilder.cs" />
     <Compile Include="Miscellanies\TelephonyScanner.cs" />
     <Compile Include="Models\ScanResultsModel.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />

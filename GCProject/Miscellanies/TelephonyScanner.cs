@@ -9,17 +9,19 @@ namespace GCProject.Miscellanies
 {
     static class TelephonyScanner
     {
-        public static async Task<List<int>> ScanAsyncTask(object args)
+        public static async Task<List<int>> ScanAsyncTask(string request)
         {
             return await Task.Run(async () =>
             {
                 var requestDictionary = new Dictionary<string, object>();
                 requestDictionary["Command"] = "Scan";
-                requestDictionary["Args"] = args;
+                requestDictionary["Args"] = request;
 
                 List<int> numbersList = null;
 
                 string jsonRequest = JsonConvert.SerializeObject(requestDictionary);
+                Console.WriteLine("Made request:\n{0}", jsonRequest);
+
                 string response = await Client.INSTANCE.SendAndReceiveAsync(jsonRequest);
 
                 try
