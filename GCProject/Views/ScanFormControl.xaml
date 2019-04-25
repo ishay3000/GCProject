@@ -18,9 +18,8 @@
         <Button Content="Previous Scan" Command="{Binding Path=PreviousScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
         <Button Content="New Scan" Command="{Binding Path=NewScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="154,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
 
-
-        <TextBox Text="{Binding Path=WhitelistFilePath, Mode=OneWay}" HorizontalAlignment="Left" IsEnabled="False" Height="23" TextWrapping="Wrap" ToolTip="File path" VerticalAlignment="Top" Width="159" Margin="10,205,0,0"/>
-        <Button Content="Browse" Command="{Binding Path=OpenFileDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="90" Margin="174,200,0,0"/>
+        <TextBox Text="{Binding Path=WhitelistFilePath, Mode=OneWay}" HorizontalAlignment="Left" IsEnabled="False" Height="23" TextWrapping="Wrap" ToolTip="File path" VerticalAlignment="Top" Width="102" Margin="10,205,0,0"/>
+        <Button Content="Choose whitelist" Command="{Binding Path=OpenFileDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Margin="124,200,0,0"/>
 
 
     </Grid>
