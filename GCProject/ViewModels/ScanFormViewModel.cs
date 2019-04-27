@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
+using GCProject.ClientService;
 using GCProject.Commands;
 using GCProject.miscellanies;
+using GCProject.Misc;
 using GCProject.Miscellanies;
-using Microsoft.VisualBasic.Logging;
+using GCProject.ValidationService;
 using Microsoft.Win32;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace GCProject.ViewModels
 {
@@ -87,12 +82,11 @@ namespace GCProject.ViewModels
 
         public ScanFormViewModel()
         {
-            _newScanCommand = new RelayCommand(NewScan);
+            _newScanCommand = new RelayCommand(NewScan/*, CanExecuteNew*/);
             _previousScanCommand = new RelayCommand(PreviousScan);
             _openFileDialogCommand = new RelayCommand(OpenFileDialog);
             NumbersList = new List<int>();
         }
-
 
         private void ShowResultsPage(List<int> numbList)
         {
@@ -106,16 +100,13 @@ namespace GCProject.ViewModels
             if (dialog.ShowDialog() == true)
             {
                 WhitelistFilePath = dialog.FileName;
-                Console.WriteLine("Reading whitelist at path: " + WhitelistFilePath);
-                await Task.Run(async () =>
-                {
-                    _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
-                });
+                Console.WriteLine("Reading whitelist at path:\t{0}", WhitelistFilePath);
+
+                _whitelistNumbersList = await FileReader.ReadWhitelistAsync(WhitelistFilePath);
                 if (_whitelistNumbersList != null && _whitelistNumbersList.Count > 0)
                 {
-                    Console.WriteLine("Finished reading whitelist. Numbers counts: " + _whitelistNumbersList.Count);
+                    Console.WriteLine("Finished reading whitelist. Numbers Found: " + _whitelistNumbersList.Count);
                 }
-
                 else
                 {
                     Console.WriteLine("Error: Couldn't read whitelist");
@@ -125,15 +116,19 @@ namespace GCProject.ViewModels
 
         private async void NewScan()
         {
+            var validation = ScanValidation.ValidateNew(_startText, _endText, _whitelistNumbersList);
+            if (!validation.Item1)
+            {
+                MessageBox.Show(validation.Item2);
+                return;
+            }
+
             // TODO perhaps consider using builder pattern instead ?
-            string request = new JRequestBuilder()
-                .SetScanType("New")
-                .SetScanArgs(new {Start = int.Parse(_startText), End = int.Parse(_endText)})
-                .Build()
+            string request = new ScanJRequest("New",
+                new { Start = StartText, End = EndText, Whitelist = _whitelistNumbersList })
                 .ToJson();
-            
             var numbers = await TelephonyScanner.ScanAsyncTask(request);
-            if (numbers != null)
+            if (numbers != null && numbers.Count > 0)
             {
                 ShowResultsPage(numbers);
             }
@@ -145,31 +140,30 @@ namespace GCProject.ViewModels
 
         private async void PreviousScan()
         {
-            // TODO implement previous scan logic
-            string input =
+            string scanName =
                 Microsoft.VisualBasic.Interaction.InputBox("Please choose the previous scan's name",
                     "Scan name",
                     "Test",
                     -1, -1);
 
-            if (!string.IsNullOrEmpty(input))
+            var validation = ScanValidation.ValidatePrevious(scanName);
+            if (!validation.Item1)
             {
-                string request = JRequestBuilder
-                    .CreateNew()
-                    .SetScanType("Previous")
-                    .SetScanArgs(new {ScanName = input})
-                    .Build()
-                    .ToJson();
+                MessageBox.Show(validation.Item2);
+                return; ;
+            }
 
-                var numbers = await TelephonyScanner.ScanAsyncTask(request);
-                if (numbers != null)
-                {
-                    ShowResultsPage(numbers);
-                }
-                else
-                {
-                    Console.WriteLine("Couldn't find numbers");
-                }
+            ScanJRequest scanJRequest = new ScanJRequest("Previous",
+                new { ScanName = scanName });
+
+            var numbers = await TelephonyScanner.ScanAsyncTask(scanJRequest.ToJson());
+            if (numbers != null && numbers.Count > 0)
+            {
+                ShowResultsPage(numbers);
+            }
+            else
+            {
+                Console.WriteLine("Couldn't find numbers");
             }
         }
     }

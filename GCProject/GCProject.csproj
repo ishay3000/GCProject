@@ -71,22 +71,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientService\BaseJRequest.cs" />
+    <Compile Include="ClientService\CallManagerJRequest.cs" />
+    <Compile Include="ClientService\ScanJRequest.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Miscellanies\BaseUserControl.cs" />
-    <Compile Include="Miscellanies\Client.cs" />
-    <Compile Include="Miscellanies\Extensions.cs" />
-    <Compile Include="Miscellanies\FileReader.cs" />
-    <Compile Include="Miscellanies\FrameManager.cs" />
-    <Compile Include="Miscellanies\IJRequestBuilder.cs" />
-    <Compile Include="Miscellanies\IJRequestScanArgs.cs" />
-    <Compile Include="Miscellanies\IJRequestScanType.cs" />
-    <Compile Include="Miscellanies\JRequest.cs" />
-    <Compile Include="Miscellanies\JRequestBuilder.cs" />
-    <Compile Include="Miscellanies\TelephonyScanner.cs" />
+    <Compile Include="Misc\BaseUserControl.cs" />
+    <Compile Include="ClientService\Client.cs" />
+    <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Misc\FileReader.cs" />
+    <Compile Include="Misc\FrameManager.cs" />
+    <Compile Include="Misc\TelephonyScanner.cs" />
     <Compile Include="Models\ScanResultsModel.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />
     <Compile Include="Models\MenuCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ValidationService\ScanValidation.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
     <Compile Include="ViewModels\ScanFormViewModel.cs" />
