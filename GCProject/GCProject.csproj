@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Radar Screen Blue_0.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=1.0.0.14576, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.1\lib\net45\MaterialDesignColors.dll</HintPath>
@@ -44,6 +47,7 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.0.1205, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.0.1205\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -67,20 +71,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientService\BaseJRequest.cs" />
+    <Compile Include="ClientService\CallManagerJRequest.cs" />
+    <Compile Include="ClientService\ScanJRequest.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Miscellanies\BaseUserControl.cs" />
-    <Compile Include="Miscellanies\Client.cs" />
-    <Compile Include="Miscellanies\Extensions.cs" />
-    <Compile Include="Miscellanies\FrameManager.cs" />
+    <Compile Include="Misc\BaseUserControl.cs" />
+    <Compile Include="ClientService\Client.cs" />
+    <Compile Include="Misc\Extensions.cs" />
+    <Compile Include="Misc\FileReader.cs" />
+    <Compile Include="Misc\FrameManager.cs" />
+    <Compile Include="Misc\TelephonyScanner.cs" />
     <Compile Include="Models\ScanResultsModel.cs" />
     <Compile Include="Models\SideMenuOptionModel.cs" />
     <Compile Include="Models\MenuCardModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ValidationService\ScanValidation.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MenuCardViewModel.cs" />
+    <Compile Include="ViewModels\ScanFormViewModel.cs" />
     <Compile Include="ViewModels\ScanResultsViewModel.cs" />
-    <Compile Include="Views\ScanNetworkControl.xaml.cs">
-      <DependentUpon>ScanNetworkControl.xaml</DependentUpon>
+    <Compile Include="Views\ScanFormControl.xaml.cs">
+      <DependentUpon>ScanFormControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScanResultsControl.xaml.cs">
       <DependentUpon>ScanResultsControl.xaml</DependentUpon>
@@ -128,7 +139,7 @@
     <Compile Include="Views\DashboardListViewControl.xaml.cs">
       <DependentUpon>DashboardListViewControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\ScanNetworkControl.xaml">
+    <Page Include="Views\ScanFormControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Scroll view images\telephon_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Radar Screen Blue_0.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

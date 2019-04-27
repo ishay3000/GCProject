@@ -12,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GCProject.Miscellanies;
+using GCProject.ViewModels;
 
 namespace GCProject.Views
 {
     /// <summary>
-    /// Interaction logic for ScanNetworkControl.xaml
+    /// Interaction logic for ScanFormControl.xaml
     /// </summary>
-    public partial class ScanNetworkControl : UserControl
-    { 
-        public ScanNetworkControl()
+    public partial class ScanFormControl : UserControl
+    {
+        public ScanFormControl()
         {
             InitializeComponent();
+			DataContext = ScanFormViewModel.INSTANCE;
         }
     }
 }

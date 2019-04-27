@@ -6,32 +6,8 @@
              xmlns:local="clr-namespace:GCProject.Views"
              xmlns:data="clr-namespace:GCProject.Models"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400">
-
-	<!--<UserControl.Resources>
-		<ResourceDictionary>
-			<DataTemplate DataType="{x:Type data:ScanResultsModel}">
-				<
-			</DataTemplate>
-		</ResourceDictionary>
-	</UserControl.Resources>-->
-
-	<Grid HorizontalAlignment="Center">
-		<DataGrid x:Name="NumbersGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Left" Height="290" VerticalAlignment="Top" Width="300" Margin="6,54,-26,0">
-			<DataGrid.Columns>
-				<!--<DataGridTextColumn Header="Number" Binding="{Binding Number}"/>-->
-			</DataGrid.Columns>
-		</DataGrid>
-		<Button Content="Toggle Menu" Command="{Binding Path=ToggleMenuCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="90,0,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
-
-		<Grid Visibility="{Binding Path=MenuVisibility, Mode=TwoWay}">
-			<TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="17,88,0,0"/>
-			<Label Content="Start" Style="{DynamicResource MaterialDesignLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="59,57,0,0"/>
-			<TextBox HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignTextBox}" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="164,88,0,0"/>
-			<Label Content="End" Style="{DynamicResource MaterialDesignLabel}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,57,0,0"/>
-			<Button Content="Previous Scan" Command="{Binding Path=PreviousScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="17,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
-			<Button Content="New Scan" Command="{Binding Path=NewScanCommand, Mode=TwoWay}" HorizontalAlignment="Left" Margin="164,141,0,0" VerticalAlignment="Top" Width="120" FontSize="11"/>
-
-		</Grid>
-	</Grid>
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <DataGrid x:Name="ResultsDataGrid" Style="{DynamicResource MaterialDesignDataGrid}" Visibility="{Binding Path=GridVisibility}" ItemsSource="{Binding Path=ScanResults, Mode=TwoWay}" HorizontalAlignment="Center" Height="300" VerticalAlignment="Top" Width="300" />
+    </Grid>
 </UserControl>

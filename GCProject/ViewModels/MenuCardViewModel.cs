@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
+using GCProject.ClientService;
 using GCProject.Commands;
 using GCProject.miscellanies;
 using GCProject.Models;
@@ -43,13 +45,18 @@ namespace GCProject.ViewModels
 
         private void CallManager()
         {
-            MessageBox.Show("Call management is not implemented yet.");
+            //MessageBox.Show("Call management is not implemented yet.");
+            var request = new CallManagerJRequest();
+            Task.Run(async () =>
+            {
+                dynamic response = await Client.INSTANCE.SendAndReceiveAsync(request.ToJson());
+            });
         }
 
         private void ScanCommand()
         {
             //MessageBox.Show("Network scanning not is implemented yet.");
-            FrameManager.MovePage(ControlsTitles.ScanResults);
+            FrameManager.MovePage(ControlsTitles.ScanForm);
         }
 
         // TODO reserved for future use (?)
